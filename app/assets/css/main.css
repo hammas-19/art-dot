@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+	cursor: none;
+}
+
+a,
+button,
+[role="button"] {
+	cursor: none;
+}
+
+@media (max-width: 1024px) {
+	:root {
+		cursor: auto;
+	}
+
+	a,
+	button,
+	[role="button"] {
+		cursor: pointer;
+	}
+}
