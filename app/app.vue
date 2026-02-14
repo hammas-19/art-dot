@@ -13,6 +13,10 @@ import CtaBanner from "./components/CtaBanner.vue";
 import CaseStudiesSection from "./components/CaseStudiesSection.vue";
 import LiveFeedSection from "./components/LiveFeedSection.vue";
 import ProcessSection from "./components/ProcessSection.vue";
+import ServicesSection from "./components/ServicesSection.vue";
+import ValuePropositionSection from "./components/ValuePropositionSection.vue";
+import PricingSection from "./components/PricingSection.vue";
+import FooterSection from "./components/FooterSection.vue";
 </script>
 
 <template>
@@ -34,5 +38,9 @@ import ProcessSection from "./components/ProcessSection.vue";
     <CaseStudiesSection />
     <LiveFeedSection />
     <ProcessSection />
+    <ServicesSection />
+    <ValuePropositionSection />
+    <PricingSection />
+    <FooterSection />
   </div>
 </template>

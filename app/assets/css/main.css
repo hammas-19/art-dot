@@ -1,23 +1,14 @@
 @import "tailwindcss";
 
-:root {
-	cursor: none;
+html.lenis,
+html.lenis body {
+	height: auto;
 }
 
-a,
-button,
-[role="button"] {
-	cursor: none;
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
 }
 
-@media (max-width: 1024px) {
-	:root {
-		cursor: auto;
-	}
-
-	a,
-	button,
-	[role="button"] {
-		cursor: pointer;
-	}
+.lenis.lenis-stopped {
+	overflow: hidden;
 }

@@ -35,18 +35,20 @@ onUnmounted(() => {
     class="cursor-follower"
     :class="{ 'is-hovering': isHovering }"
     :style="{
-      transform: `translate(${cursorX}px, ${cursorY}px)`
+      '--x': cursorX,
+      '--y': cursorY
     }"
   />
 </template>
 
 <style scoped>
 .cursor-follower {
+  --cursor-size: 14px;
   position: fixed;
   top: 0;
   left: 0;
-  width: 14px;
-  height: 14px;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
   border-radius: 999px;
   pointer-events: none;
   z-index: 9999;
@@ -56,6 +58,11 @@ onUnmounted(() => {
     0 0 0 2px rgba(255, 255, 255, 0.95),
     0 0 18px rgba(255, 255, 255, 0.35),
     0 0 40px rgba(255, 255, 255, 0.2);
+  transform: translate3d(
+    calc(var(--x) * 1px - (var(--cursor-size) / 2)),
+    calc(var(--y) * 1px - (var(--cursor-size) / 2)),
+    0
+  );
   transform-origin: center;
   transition: width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease;
   will-change: transform, width, height;
@@ -71,8 +78,7 @@ onUnmounted(() => {
 }
 
 .cursor-follower.is-hovering {
-  width: 34px;
-  height: 34px;
+  --cursor-size: 34px;
   background: rgba(255, 255, 255, 0.2);
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 1),
