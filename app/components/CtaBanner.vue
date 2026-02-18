@@ -26,10 +26,10 @@ onUnmounted(() => {
   <section
     id="section-cta"
     ref="sectionRef"
-    class="relative overflow-hidden bg-black text-white"
+    class="relative overflow-hidden bg-white text-black"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="absolute inset-0 opacity-20">
+    <div class="absolute inset-0 flex items-center opacity-40">
       <div class="marquee-track">
         <div class="marquee-row">
           <span v-for="index in 12" :key="`cta-${index}`" class="marquee-item">
@@ -39,25 +39,22 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <div class="space-y-6">
-          <h2 class="cta-fade text-4xl font-semibold tracking-tight sm:text-5xl">
-            Seen Enough?
-          </h2>
-          <p class="cta-fade max-w-2xl text-base text-white/70 sm:text-lg">
-            You've seen the numbers. You've seen the reach. Now stop watching and
-            start dominating.
-          </p>
-        </div>
-        <div class="flex items-center lg:justify-end">
-          <a
-            href="mailto:Enquiry@artdotagency.co.uk"
-            class="cta-fade inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-xs font-semibold uppercase tracking-[0.35em] transition hover:border-white"
-          >
-            Start a Project
-          </a>
-        </div>
+    <div class="relative mx-auto max-w-[110rem] px-6 py-24 lg:px-16 lg:py-32">
+      <div class="flex flex-col items-center gap-6 text-center">
+        <h2 class="cta-fade text-4xl font-semibold uppercase tracking-tight sm:text-5xl lg:text-6xl">
+          Seen Enough?
+        </h2>
+        <p class="cta-fade max-w-3xl text-sm uppercase tracking-[0.2em] text-black/60 sm:text-base">
+          You've seen the numbers. You've seen the reach. Now stop watching and
+          start dominating.
+        </p>
+        <a
+          href="mailto:Enquiry@artdotagency.co.uk"
+          class="cta-fade inline-flex items-center justify-center gap-3 bg-amber-300 px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-amber-200"
+        >
+          Start a Project
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -76,12 +73,12 @@ onUnmounted(() => {
 }
 
 .marquee-item {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: clamp(5rem, 16vw, 13rem);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.35em;
   white-space: nowrap;
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(0, 0, 0, 0.08);
 }
 
 .cta-fade {

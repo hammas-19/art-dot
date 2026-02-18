@@ -47,25 +47,22 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-start">
+    <div class="mx-auto max-w-[110rem] px-8 py-20 lg:px-16 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-start">
         <div
           class="space-y-6 lg:pr-12"
           :style="{ transform: `translate3d(0, ${-parallaxY * 0.18}px, 0)` }"
         >
-          <p class="fade-in max-w-4xl text-2xl font-semibold leading-snug text-white/90 sm:text-3xl lg:text-4xl" style="transition-delay: 200ms">
+          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-white/85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
             {{ denseText }}
           </p>
         </div>
 
         <div class="space-y-4 text-right">
-          <div class="flex items-center justify-end gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-            <span class="hidden h-px w-16 bg-white/20 lg:block" />
-            <span>02 — Our Mission</span>
+          <div class="fade-in flex items-center justify-end gap-4 text-[11px] font-medium uppercase tracking-[0.36em] text-white/50" style="transition-delay: 120ms">
+            <span>02 — OUR MISSION</span>
+            <span class="hidden h-px w-12 bg-white/25 lg:block" />
           </div>
-          <p class="fade-in text-sm uppercase tracking-[0.3em] text-white/40" style="transition-delay: 120ms">
-            MISSION
-          </p>
         </div>
       </div>
     </div>

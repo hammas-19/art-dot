@@ -34,8 +34,8 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-      <div class="flex items-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.45em] text-amber-300/80">
+    <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
+      <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-amber-300/80">
         <span class="inline-block h-px w-8 bg-amber-300/70" />
         To partner with us
       </div>
@@ -58,27 +58,27 @@ onUnmounted(() => {
 
       <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
         <div class="space-y-4">
-          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Get in touch</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Get in touch</p>
           <a
             href="mailto:Enquiry@artdotagency.co.uk"
-            class="text-2xl font-semibold text-white/90 transition hover:text-amber-200"
+            class="text-3xl font-semibold text-white/90 transition hover:text-amber-200 lg:text-4xl"
           >
             Enquiry@artdotagency.co.uk
           </a>
         </div>
 
         <div class="space-y-4">
-          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Visit us</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Visit us</p>
           <a
             href="https://artdotquarter.io"
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center gap-2 text-lg font-semibold text-white/90 transition hover:text-amber-200"
+            class="inline-flex items-center gap-2 text-xl font-semibold text-white/90 transition hover:text-amber-200 lg:text-2xl"
           >
             artdotquarter.io
             <span class="text-amber-300">↗</span>
           </a>
-          <p class="text-sm uppercase tracking-[0.3em] text-white/50">
+          <p class="text-base uppercase tracking-[0.3em] text-white/50">
             14-15 Allison Street, Birmingham
             <br />
             United Kingdom
@@ -86,7 +86,7 @@ onUnmounted(() => {
         </div>
 
         <div class="space-y-4 lg:text-right">
-          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Follow us</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Follow us</p>
           <div class="flex items-center gap-3 lg:justify-end">
             <a href="#" class="social-chip" aria-label="Instagram">IG</a>
             <a href="#" class="social-chip" aria-label="Facebook">FB</a>
@@ -113,7 +113,7 @@ onUnmounted(() => {
 
 <style scoped>
 .thank-title {
-  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-size: clamp(4.5rem, 12vw, 9rem);
   line-height: 0.95;
 }
 
@@ -129,9 +129,8 @@ onUnmounted(() => {
 }
 
 .social-chip {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

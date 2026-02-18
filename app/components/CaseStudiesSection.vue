@@ -77,19 +77,19 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[120rem] px-6 py-20 lg:px-16 lg:py-32">
       <div class="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
         <div class="space-y-4">
-          <div class="flex items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
+          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
             <span class="inline-block h-px w-8 bg-amber-300/70" />
             04 — Selected Work
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Featured</span>
             <span class="text-amber-300"> Case Studies</span>
           </h2>
         </div>
-        <p class="max-w-sm text-xs uppercase tracking-[0.4em] text-white/50 lg:text-right">
+        <p class="max-w-sm text-[0.75rem] uppercase tracking-[0.4em] text-white/50 lg:text-right">
           Real results delivered through data-led strategies.
         </p>
       </div>
@@ -99,7 +99,7 @@ onUnmounted(() => {
           v-for="(study, index) in caseStudies"
           :key="study.id"
           :href="study.link"
-          class="case-card group relative overflow-hidden rounded-2xl border border-white/10 bg-black/40"
+          class="case-card group relative overflow-hidden border border-white/10 bg-black/40"
           :style="{ '--delay': `${index * 110}ms` }"
           role="button"
           aria-label="Open case study"
@@ -116,23 +116,23 @@ onUnmounted(() => {
             />
           </div>
 
-          <div class="pointer-events-none absolute left-5 top-5 text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-amber-300/90">
+          <div class="pointer-events-none absolute left-5 top-5 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300/90">
             {{ study.number }}
           </div>
 
          
 
           <div
-            class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-amber-300/70 bg-amber-300/10 p-2 text-amber-300 transition duration-300 group-hover:bg-amber-300 group-hover:text-black"
+            class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 border border-amber-300/70 bg-amber-300/10 p-2 text-amber-300 transition duration-300 group-hover:bg-amber-300 group-hover:text-black"
           >
             <span class="text-base">→</span>
           </div>
 
           <div class="case-footer pointer-events-none">
-            <h3 class="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h3 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
               {{ study.title }}
             </h3>
-            <p class="text-xs uppercase tracking-[0.3em] text-amber-300/80">
+            <p class="mt-1 text-[0.8rem] uppercase tracking-[0.3em] text-amber-300/80">
               {{ study.subtitle }}
             </p>
           </div>
@@ -160,11 +160,11 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1.6rem 1.8rem 1.7rem;
+  padding: 2rem 2rem 2rem;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.78) 55%, rgba(0, 0, 0, 0.95) 100%);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.6rem;
 }
 
 .case-ring {

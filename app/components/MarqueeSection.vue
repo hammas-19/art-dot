@@ -8,7 +8,13 @@ const brands = [
   "CARSICKO",
   "SOUTHWEST",
   "SIX",
-  "YOYOSO"
+  "YOYOSO",
+  "BURNA BOY",
+  "HEADIE ONE",
+  "EH IZ",
+  "RIMZEE",
+  "STREET CULTURE",
+  "URBAN COLLECTIVE"
 ];
 
 const sectionRef = ref<HTMLElement | null>(null);
@@ -79,12 +85,12 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-      <div class="max-w-3xl space-y-4">
-        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+    <div class="px-0 py-20 lg:py-28">
+      <div class="mx-auto max-w-[110rem] px-6 lg:px-16 space-y-4">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-white/60">
           Our Marketing Experience
         </p>
-        <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           We have extensive experience growing brands.
         </h2>
       </div>
@@ -142,7 +148,7 @@ onUnmounted(() => {
 }
 
 .marquee-item {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;

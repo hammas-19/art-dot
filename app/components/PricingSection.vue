@@ -161,10 +161,10 @@ onUnmounted(() => {
     class="pricing-section bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col items-center gap-6 text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.5em] text-amber-300">07 — Pricing</p>
-        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.5em] text-amber-300">07 — Pricing</p>
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Packages</span>
           <span class="text-amber-300"> &amp; Rates</span>
         </h2>
@@ -174,7 +174,7 @@ onUnmounted(() => {
         <article
           v-for="(pkg, index) in soloPackages"
           :key="pkg.id"
-          class="pricing-card group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-8"
+          class="pricing-card group relative overflow-hidden border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-10"
           :class="{ 'is-popular': pkg.popular }"
           :style="{ '--delay': `${index * 120}ms` }"
         >
@@ -184,28 +184,28 @@ onUnmounted(() => {
           >
             Popular
           </span>
-          <div class="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-white/50">
+          <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-white/50">
             <span>Solo</span>
             <span>{{ pkg.channel }}</span>
           </div>
-          <div class="mt-6 space-y-2 text-center">
-            <p class="text-xs uppercase tracking-[0.35em] text-white/50">Package</p>
-            <h3 class="text-2xl font-semibold tracking-tight text-white">
+          <div class="mt-8 space-y-2 text-center">
+            <p class="text-[0.7rem] uppercase tracking-[0.35em] text-white/50">Package</p>
+            <h3 class="text-3xl font-semibold tracking-tight text-white lg:text-4xl">
               <span :class="pkg.popular ? 'text-amber-300' : ''">{{ pkg.name }}</span>
             </h3>
           </div>
 
-          <div class="battery-wrap">
+          <div class="battery-wrap mt-10">
             <div class="battery">
               <span class="battery-fill" :style="{ height: `${pkg.batteryLevel}%` }" />
             </div>
           </div>
 
-          <div class="mt-6 text-center">
-            <p class="text-4xl font-semibold">£{{ pkg.price.toLocaleString() }}</p>
+          <div class="mt-10 text-center">
+            <p class="text-5xl font-semibold lg:text-6xl">£{{ pkg.price.toLocaleString() }}</p>
           </div>
 
-          <ul class="mt-8 space-y-3 text-sm text-white/65">
+          <ul class="mt-10 space-y-4 text-base text-white/65">
             <li v-for="feature in pkg.features" :key="feature" class="flex items-start gap-3">
               <span class="feature-dot" />
               <span>{{ feature }}</span>
@@ -214,7 +214,7 @@ onUnmounted(() => {
 
           <button
             type="button"
-            class="mt-10 w-full rounded-full border border-white/10 px-5 py-3 text-xs uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
+            class="mt-12 w-full border border-white/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
             :class="pkg.popular ? 'bg-amber-400/90 text-black hover:text-black' : 'bg-white/5'"
           >
             {{ pkg.cta }}
@@ -224,25 +224,25 @@ onUnmounted(() => {
 
       <div class="mt-16 border-t border-white/10 pt-12">
         <div class="text-center">
-          <p class="text-xs font-semibold uppercase tracking-[0.45em] text-amber-300">Hourly Options</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-amber-300">Hourly Options</p>
         </div>
         <div class="mt-10 grid gap-6 lg:grid-cols-2">
           <article
             v-for="(pkg, index) in hourlyPackages"
             :key="pkg.id"
-            class="hourly-card rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-8"
+            class="hourly-card border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-10"
             :style="{ '--delay': `${(index + 3) * 120}ms` }"
           >
-            <div class="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-white/50">
+            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-white/50">
               <span>{{ pkg.channel }}</span>
               <span class="text-amber-300">£{{ pkg.price }}</span>
             </div>
-            <h3 class="mt-4 text-xl font-semibold uppercase tracking-tight text-white">
+            <h3 class="mt-6 text-2xl font-semibold uppercase tracking-tight text-white lg:text-3xl">
               {{ pkg.name }}
             </h3>
-            <p class="mt-1 text-xs uppercase tracking-[0.35em] text-white/40">Per hour</p>
+            <p class="mt-2 text-[0.7rem] uppercase tracking-[0.35em] text-white/40">Per hour</p>
 
-            <ul class="mt-6 space-y-3 text-sm text-white/65">
+            <ul class="mt-8 space-y-4 text-base text-white/65">
               <li v-for="feature in pkg.features" :key="feature" class="flex items-start gap-3">
                 <span class="feature-dot" />
                 <span>{{ feature }}</span>
@@ -251,16 +251,16 @@ onUnmounted(() => {
 
             <button
               type="button"
-              class="mt-8 w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
+              class="mt-10 w-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
             >
               {{ pkg.cta }}
             </button>
           </article>
         </div>
 
-        <div class="slider-wrap relative mt-14 rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-black/90 p-8">
+        <div class="slider-wrap relative mt-14 border border-white/10 bg-gradient-to-b from-white/5 to-black/90 p-10">
           <div class="flex flex-col gap-4 text-center">
-            <div class="flex items-center justify-between text-xs uppercase tracking-[0.45em] text-white/45">
+            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.45em] text-white/45">
               <span class="text-amber-300">06:00 AM</span>
               <span>Drag to select time</span>
               <span class="text-amber-300">06:00 PM</span>
@@ -314,7 +314,6 @@ onUnmounted(() => {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 24px;
   border: 1px solid transparent;
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(0, 0, 0, 0)) border-box;
   mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);

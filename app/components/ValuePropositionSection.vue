@@ -51,6 +51,54 @@ const values: ValuePoint[] = [
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+const glowStates = new WeakMap<HTMLElement, { x: number; y: number; tx: number; ty: number; raf: number | null }>();
+
+const animateGlow = (target: HTMLElement) => {
+  const state = glowStates.get(target);
+  if (!state) return;
+
+  const dx = state.tx - state.x;
+  const dy = state.ty - state.y;
+  state.x += dx * 0.12;
+  state.y += dy * 0.12;
+  target.style.setProperty("--glow-x", `${state.x}px`);
+  target.style.setProperty("--glow-y", `${state.y}px`);
+
+  if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+    state.raf = null;
+    return;
+  }
+
+  state.raf = requestAnimationFrame(() => animateGlow(target));
+};
+
+const handleCardMove = (event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement | null;
+  if (!target) return;
+  const rect = target.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  let state = glowStates.get(target);
+  if (!state) {
+    state = { x, y, tx: x, ty: y, raf: null };
+    glowStates.set(target, state);
+  }
+  state.tx = x;
+  state.ty = y;
+  if (state.raf === null) {
+    state.raf = requestAnimationFrame(() => animateGlow(target));
+  }
+};
+
+const handleCardLeave = (event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement | null;
+  if (!target) return;
+  const state = glowStates.get(target);
+  if (state?.raf) cancelAnimationFrame(state.raf);
+  glowStates.delete(target);
+  target.style.removeProperty("--glow-x");
+  target.style.removeProperty("--glow-y");
+};
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -75,12 +123,12 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col items-start gap-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-amber-300">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
           07 — Value Proposition
         </p>
-        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Why Partner</span>
           <span class="text-amber-300"> With Us?</span>
         </h2>
@@ -90,16 +138,18 @@ onUnmounted(() => {
         <article
           v-for="(item, index) in values"
           :key="item.id"
-          class="value-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6"
+          class="value-card group relative overflow-hidden border border-white/10 bg-white/5 p-10 transition"
           :style="{ '--delay': `${index * 90}ms` }"
+          @mousemove="handleCardMove"
+          @mouseleave="handleCardLeave"
         >
           <div class="icon-box">
             <span class="text-lg">{{ item.icon }}</span>
           </div>
-          <h3 class="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
+          <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.3em] text-white/80 lg:text-xl">
             {{ item.title }}
           </h3>
-          <p class="mt-3 text-sm text-white/60">
+          <p class="mt-3 text-base text-white/60">
             {{ item.description }}
           </p>
         </article>
@@ -110,20 +160,44 @@ onUnmounted(() => {
 
 <style scoped>
 .value-card {
+  position: relative;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.4s ease, background 0.4s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
   transition-delay: var(--delay, 0ms);
+}
+
+.value-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
+    rgba(255, 196, 70, 0.22),
+    rgba(255, 196, 70, 0.04) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.value-card:hover::before {
+  opacity: 1;
+}
+
+.value-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.2));
+  pointer-events: none;
 }
 
 .is-visible .value-card {
   opacity: 1;
   transform: translateY(0);
-}
-
-.value-card:hover {
-  border-color: rgba(251, 191, 36, 0.5);
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.16), rgba(0, 0, 0, 0.2));
 }
 
 .icon-box {

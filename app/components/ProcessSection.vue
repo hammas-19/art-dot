@@ -57,6 +57,54 @@ const steps: ProcessStep[] = [
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+const glowStates = new WeakMap<HTMLElement, { x: number; y: number; tx: number; ty: number; raf: number | null }>();
+
+const animateGlow = (target: HTMLElement) => {
+  const state = glowStates.get(target);
+  if (!state) return;
+
+  const dx = state.tx - state.x;
+  const dy = state.ty - state.y;
+  state.x += dx * 0.12;
+  state.y += dy * 0.12;
+  target.style.setProperty("--glow-x", `${state.x}px`);
+  target.style.setProperty("--glow-y", `${state.y}px`);
+
+  if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+    state.raf = null;
+    return;
+  }
+
+  state.raf = requestAnimationFrame(() => animateGlow(target));
+};
+
+const handleCardMove = (event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement | null;
+  if (!target) return;
+  const rect = target.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  let state = glowStates.get(target);
+  if (!state) {
+    state = { x, y, tx: x, ty: y, raf: null };
+    glowStates.set(target, state);
+  }
+  state.tx = x;
+  state.ty = y;
+  if (state.raf === null) {
+    state.raf = requestAnimationFrame(() => animateGlow(target));
+  }
+};
+
+const handleCardLeave = (event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement | null;
+  if (!target) return;
+  const state = glowStates.get(target);
+  if (state?.raf) cancelAnimationFrame(state.raf);
+  glowStates.delete(target);
+  target.style.removeProperty("--glow-x");
+  target.style.removeProperty("--glow-y");
+};
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -81,19 +129,19 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
         <div class="space-y-4">
-          <div class="flex items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
+          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
             <span class="inline-block h-px w-8 bg-amber-300/70" />
             05 — Methodology
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Our</span>
             <span class="text-amber-300"> Process</span>
           </h2>
         </div>
-        <p class="max-w-sm text-xs uppercase tracking-[0.4em] text-white/50 lg:text-right">
+        <p class="max-w-sm text-[0.75rem] uppercase tracking-[0.4em] text-white/50 lg:text-right">
           A strategic framework for scalable growth.
         </p>
       </div>
@@ -102,25 +150,19 @@ onUnmounted(() => {
         <article
           v-for="(step, index) in steps"
           :key="step.id"
-          class="process-card group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8 transition-all duration-500 hover:border-amber-300/40 hover:bg-gradient-to-br hover:from-amber-300/10 hover:to-transparent"
+          class="process-card group relative overflow-hidden border border-white/10 bg-white/5 p-10 transition"
           :style="{ '--delay': `${index * 90}ms` }"
+          @mousemove="handleCardMove"
+          @mouseleave="handleCardLeave"
         >
-          <div class="absolute right-6 top-6 text-6xl font-bold text-amber-300/5 transition-all duration-500 group-hover:text-amber-300/10">
-            {{ step.number }}
-          </div>
-
-          <div class="hover-indicator">
-            <span class="indicator-dot" />
-          </div>
-
           <div class="relative space-y-4">
             <div class="text-xs font-semibold uppercase tracking-[0.35em] text-amber-300/80 transition-colors duration-300 group-hover:text-amber-300">
               {{ step.number }}
             </div>
-            <h3 class="text-xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-amber-300">
+            <h3 class="text-2xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-amber-300 lg:text-3xl">
               {{ step.title }}
             </h3>
-            <p class="text-sm leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-white/80">
+            <p class="text-base leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-white/80">
               {{ step.description }}
             </p>
           </div>
@@ -132,10 +174,39 @@ onUnmounted(() => {
 
 <style scoped>
 .process-card {
+  position: relative;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.5s ease, background 0.5s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
   transition-delay: var(--delay, 0ms);
+}
+
+.process-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
+    rgba(255, 196, 70, 0.22),
+    rgba(255, 196, 70, 0.04) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.process-card:hover::before {
+  opacity: 1;
+}
+
+.process-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.2));
+  pointer-events: none;
 }
 
 .is-visible .process-card {
@@ -143,42 +214,5 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 
-.hover-indicator {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 2px solid rgba(251, 191, 36, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
 
-.process-card:hover .hover-indicator {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.indicator-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgb(251, 191, 36);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
 </style>

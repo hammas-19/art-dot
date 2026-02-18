@@ -75,24 +75,32 @@ onUnmounted(() => {
     class="bg-black text-white"
     :class="{ 'is-visible': isVisible }"
   >
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
-      <div class="flex flex-col gap-8 border-b border-white/10 pb-8 lg:flex-row lg:items-start lg:justify-between">
-        <div class="space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+    <div class="mx-auto max-w-[120rem] px-6 py-20 lg:px-16 lg:py-28">
+      <div class="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between">
+        <div class="space-y-4">
+          <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-amber-300/80">
             The Network
           </p>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">Renowned Artists</h2>
+          <h2 class="text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Renowned
+            <br />
+            Artists
+          </h2>
         </div>
-        <div class="grid gap-8 text-right sm:grid-cols-2">
-          <div class="stat-block">
-            <p class="text-3xl font-semibold sm:text-4xl">3.83M</p>
-            <p class="mt-2 text-[0.65rem] uppercase tracking-[0.35em] text-white/50">
+        <div class="grid gap-10 text-right sm:grid-cols-2">
+          <div>
+            <p class="text-4xl font-semibold text-white sm:text-5xl">
+              3.83<span class="text-amber-300">M</span>
+            </p>
+            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-white/50">
               Avg Reach / Event
             </p>
           </div>
-          <div class="stat-block">
-            <p class="text-3xl font-semibold sm:text-4xl">22.97M+</p>
-            <p class="mt-2 text-[0.65rem] uppercase tracking-[0.35em] text-white/50">
+          <div>
+            <p class="text-4xl font-semibold text-white sm:text-5xl">
+              22.97<span class="text-amber-300">M+</span>
+            </p>
+            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-white/50">
               Total Impressions
             </p>
           </div>
@@ -103,7 +111,7 @@ onUnmounted(() => {
         <article
           v-for="(artist, index) in artists"
           :key="artist.handle"
-          class="artist-card group relative overflow-hidden rounded-2xl border border-white/10"
+          class="artist-card group relative overflow-hidden border border-white/10"
           :class="index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'"
           :style="{ '--delay': `${index * 90}ms` }"
         >
@@ -117,15 +125,15 @@ onUnmounted(() => {
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
           </div>
 
-          <span class="badge">
+          <span class="absolute left-4 top-4 rounded-full bg-black/70 px-2.5 py-1 text-[0.55rem] uppercase tracking-[0.25em] text-white/75">
             {{ artist.handle.toUpperCase() }}
           </span>
 
-          <div class="absolute bottom-4 left-4 space-y-2">
-            <h3 class="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+          <div class="absolute bottom-5 left-5 space-y-2">
+            <h3 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               {{ artist.name }}
             </h3>
-            <div class="flex items-center gap-4 text-xs uppercase tracking-[0.25em] text-white/70">
+            <div class="flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-white/70">
               <span class="flex items-center gap-2">
                 <Instagram class="h-3.5 w-3.5 text-white/70" />
                 {{ artist.instagram }}
@@ -158,16 +166,4 @@ onUnmounted(() => {
   transition-delay: var(--delay, 0ms);
 }
 
-.badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.65);
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-}
 </style>
