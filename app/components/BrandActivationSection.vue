@@ -78,13 +78,13 @@ onUnmounted(() => {
     :class="{ 'is-visible': isVisible }"
   >
     <div class="mx-auto max-w-[120rem] px-6 py-20 lg:px-16 lg:py-28">
-      <div class="grid border border-white/10 bg-white/5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,1fr)]">
+      <div class="grid border border-light/10 bg-light/5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,1fr)]">
         <div
-          class="stat-card glow-card flex flex-col justify-center border-b border-white/10 px-8 py-12 lg:border-b-0 lg:border-r"
+          class="stat-card glow-card flex flex-col justify-center border-b border-light/10 px-8 py-12 lg:border-b-0 lg:border-r"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
-          <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-amber-300/80">
+          <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
             Live Experiences
           </p>
           <h2 class="mt-6 text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -95,11 +95,11 @@ onUnmounted(() => {
         </div>
 
         <div
-          class="stat-card glow-card flex items-center border-b border-white/10 px-8 py-12 lg:border-b-0 lg:border-r"
+          class="stat-card glow-card flex items-center border-b border-light/10 px-8 py-12 lg:border-b-0 lg:border-r"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
-          <p class="text-lg font-light uppercase leading-relaxed tracking-[0.2em] text-white/70 sm:text-xl">
+          <p class="text-lg font-light uppercase leading-relaxed tracking-[0.2em] text-light-70 sm:text-xl">
             We have hosted cultural events promoting vibrancy with some of the worlds biggest artists.
           </p>
         </div>
@@ -110,14 +110,14 @@ onUnmounted(() => {
           @mouseleave="handleCardLeave"
         >
           <div>
-            <p class="text-5xl font-semibold text-amber-300 sm:text-6xl">15+</p>
-            <p class="mt-2 text-xs uppercase tracking-[0.3em] text-white/50">
+            <p class="text-5xl font-semibold text-accent sm:text-6xl">15+</p>
+            <p class="mt-2 text-xs uppercase tracking-[0.3em] text-light-50">
               Cultural Events Hosted
             </p>
           </div>
           <div>
-            <p class="text-5xl font-semibold text-amber-300 sm:text-6xl">10k+</p>
-            <p class="mt-2 text-xs uppercase tracking-[0.3em] text-white/50">
+            <p class="text-5xl font-semibold text-accent sm:text-6xl">10k+</p>
+            <p class="mt-2 text-xs uppercase tracking-[0.3em] text-light-50">
               Total Attendees
             </p>
           </div>
@@ -142,8 +142,8 @@ onUnmounted(() => {
   inset: 0;
   background: radial-gradient(
     700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
-    rgba(255, 196, 70, 0.2),
-    rgba(255, 196, 70, 0.04) 45%,
+    rgba(var(--color-accent-glow-rgb), 0.2),
+    rgba(var(--color-accent-glow-rgb), 0.04) 45%,
     transparent 70%
   );
   opacity: 0;

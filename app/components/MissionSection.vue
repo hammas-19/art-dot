@@ -53,13 +53,13 @@ onUnmounted(() => {
           class="space-y-6 lg:pr-12"
           :style="{ transform: `translate3d(0, ${-parallaxY * 0.18}px, 0)` }"
         >
-          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-white/85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
+          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
             {{ denseText }}
           </p>
         </div>
 
         <div class="space-y-4 text-right">
-          <div class="fade-in flex items-center justify-end gap-4 text-[11px] font-medium uppercase tracking-[0.36em] text-white/50" style="transition-delay: 120ms">
+          <div class="fade-in flex items-center justify-end gap-4 text-[11px] font-medium uppercase tracking-[0.36em] text-light-50" style="transition-delay: 120ms">
             <span>02 — OUR MISSION</span>
             <span class="hidden h-px w-12 bg-white/25 lg:block" />
           </div>

@@ -67,14 +67,14 @@ onUnmounted(() => {
     :class="{ 'opacity-0': !isVisible, 'opacity-100': isVisible }"
     aria-label="Section navigation"
   >
-    <nav class="pointer-events-auto flex flex-col gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+    <nav class="pointer-events-auto flex flex-col gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-light-60">
       <button
         v-for="item in items"
         :key="item.id"
         class="flex items-center gap-2 text-left transition"
         :class="{
           'text-white': activeId === item.id,
-          'text-white/60': activeId !== item.id
+          'text-light-60': activeId !== item.id
         }"
         @click="handleClick(item.id)"
         type="button"

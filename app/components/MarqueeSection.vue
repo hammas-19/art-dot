@@ -87,7 +87,7 @@ onUnmounted(() => {
   >
     <div class="px-0 py-20 lg:py-28">
       <div class="mx-auto max-w-[110rem] px-6 lg:px-16 space-y-4">
-        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-white/60">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-light-60">
           Our Marketing Experience
         </p>
         <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">

@@ -163,10 +163,10 @@ onUnmounted(() => {
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col items-center gap-6 text-center">
-        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.5em] text-amber-300">07 — Pricing</p>
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.5em] text-accent">07 — Pricing</p>
         <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Packages</span>
-          <span class="text-amber-300"> &amp; Rates</span>
+          <span class="text-accent"> &amp; Rates</span>
         </h2>
       </div>
 
@@ -174,7 +174,7 @@ onUnmounted(() => {
         <article
           v-for="(pkg, index) in soloPackages"
           :key="pkg.id"
-          class="pricing-card group relative overflow-hidden border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-10"
+          class="pricing-card group relative overflow-hidden border border-light/10 bg-gradient-to-b from-light/5 to-dark-80 p-10"
           :class="{ 'is-popular': pkg.popular }"
           :style="{ '--delay': `${index * 120}ms` }"
         >
@@ -184,14 +184,14 @@ onUnmounted(() => {
           >
             Popular
           </span>
-          <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-white/50">
+          <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-light-50">
             <span>Solo</span>
             <span>{{ pkg.channel }}</span>
           </div>
           <div class="mt-8 space-y-2 text-center">
-            <p class="text-[0.7rem] uppercase tracking-[0.35em] text-white/50">Package</p>
+            <p class="text-[0.7rem] uppercase tracking-[0.35em] text-light-50">Package</p>
             <h3 class="text-3xl font-semibold tracking-tight text-white lg:text-4xl">
-              <span :class="pkg.popular ? 'text-amber-300' : ''">{{ pkg.name }}</span>
+              <span :class="pkg.popular ? 'text-accent' : ''">{{ pkg.name }}</span>
             </h3>
           </div>
 
@@ -205,7 +205,7 @@ onUnmounted(() => {
             <p class="text-5xl font-semibold lg:text-6xl">£{{ pkg.price.toLocaleString() }}</p>
           </div>
 
-          <ul class="mt-10 space-y-4 text-base text-white/65">
+          <ul class="mt-10 space-y-4 text-base text-light-65">
             <li v-for="feature in pkg.features" :key="feature" class="flex items-start gap-3">
               <span class="feature-dot" />
               <span>{{ feature }}</span>
@@ -214,35 +214,35 @@ onUnmounted(() => {
 
           <button
             type="button"
-            class="mt-12 w-full border border-white/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
-            :class="pkg.popular ? 'bg-amber-400/90 text-black hover:text-black' : 'bg-white/5'"
+            class="mt-12 w-full border border-light/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-light-70 transition hover:border-accent/60 hover:text-accent-hover"
+            :class="pkg.popular ? 'bg-accent-dark/90 text-black hover:text-black' : 'bg-light/5'"
           >
             {{ pkg.cta }}
           </button>
         </article>
       </div>
 
-      <div class="mt-16 border-t border-white/10 pt-12">
+      <div class="mt-16 border-t border-light/10 pt-12">
         <div class="text-center">
-          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-amber-300">Hourly Options</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-accent">Hourly Options</p>
         </div>
         <div class="mt-10 grid gap-6 lg:grid-cols-2">
           <article
             v-for="(pkg, index) in hourlyPackages"
             :key="pkg.id"
-            class="hourly-card border border-white/10 bg-gradient-to-b from-white/5 to-black/80 p-10"
+            class="hourly-card border border-light/10 bg-gradient-to-b from-light/5 to-dark-80 p-10"
             :style="{ '--delay': `${(index + 3) * 120}ms` }"
           >
-            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-white/50">
+            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.35em] text-light-50">
               <span>{{ pkg.channel }}</span>
-              <span class="text-amber-300">£{{ pkg.price }}</span>
+              <span class="text-accent">£{{ pkg.price }}</span>
             </div>
             <h3 class="mt-6 text-2xl font-semibold uppercase tracking-tight text-white lg:text-3xl">
               {{ pkg.name }}
             </h3>
-            <p class="mt-2 text-[0.7rem] uppercase tracking-[0.35em] text-white/40">Per hour</p>
+            <p class="mt-2 text-[0.7rem] uppercase tracking-[0.35em] text-light-40">Per hour</p>
 
-            <ul class="mt-8 space-y-4 text-base text-white/65">
+            <ul class="mt-8 space-y-4 text-base text-light-65">
               <li v-for="feature in pkg.features" :key="feature" class="flex items-start gap-3">
                 <span class="feature-dot" />
                 <span>{{ feature }}</span>
@@ -251,19 +251,19 @@ onUnmounted(() => {
 
             <button
               type="button"
-              class="mt-10 w-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white/70 transition hover:border-amber-300/60 hover:text-amber-200"
+              class="mt-10 w-full border border-light/15 bg-light/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-light-70 transition hover:border-accent/60 hover:text-accent-hover"
             >
               {{ pkg.cta }}
             </button>
           </article>
         </div>
 
-        <div class="slider-wrap relative mt-14 border border-white/10 bg-gradient-to-b from-white/5 to-black/90 p-10">
+        <div class="slider-wrap relative mt-14 border border-light/10 bg-gradient-to-b from-light/5 to-dark p-10">
           <div class="flex flex-col gap-4 text-center">
-            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.45em] text-white/45">
-              <span class="text-amber-300">06:00 AM</span>
+            <div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.45em] text-light-45">
+              <span class="text-accent">06:00 AM</span>
               <span>Drag to select time</span>
-              <span class="text-amber-300">06:00 PM</span>
+              <span class="text-accent">06:00 PM</span>
             </div>
 
             <div class="relative mt-6">
@@ -315,7 +315,7 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   border: 1px solid transparent;
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(0, 0, 0, 0)) border-box;
+  background: linear-gradient(135deg, rgba(var(--color-accent-rgb), 0.12), rgba(0, 0, 0, 0)) border-box;
   mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   opacity: 0;
@@ -327,8 +327,8 @@ onUnmounted(() => {
 }
 
 .pricing-card.is-popular {
-  border-color: rgba(251, 191, 36, 0.65);
-  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.5), 0 30px 60px rgba(251, 191, 36, 0.15);
+  border-color: rgba(var(--color-accent-rgb), 0.65);
+  box-shadow: 0 0 0 1px rgba(var(--color-accent-rgb), 0.5), 0 30px 60px rgba(var(--color-accent-rgb), 0.15);
 }
 
 .popular-badge {
@@ -336,7 +336,7 @@ onUnmounted(() => {
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgb(251, 191, 36);
+  background: var(--color-accent-dark);
   color: #111;
   padding: 4px 14px;
   border-radius: 999px;
@@ -354,7 +354,7 @@ onUnmounted(() => {
 .battery {
   width: 34px;
   height: 56px;
-  border: 2px solid rgba(251, 191, 36, 0.5);
+  border: 2px solid rgba(var(--color-accent-rgb), 0.5);
   border-radius: 8px;
   position: relative;
   display: flex;
@@ -372,7 +372,7 @@ onUnmounted(() => {
   width: 16px;
   height: 6px;
   border-radius: 3px 3px 0 0;
-  background: rgba(251, 191, 36, 0.5);
+  background: rgba(var(--color-accent-rgb), 0.5);
 }
 
 .battery-fill {
@@ -380,8 +380,8 @@ onUnmounted(() => {
   width: 100%;
   height: 50%;
   border-radius: 5px;
-  background: linear-gradient(180deg, rgba(251, 191, 36, 0.9), rgba(251, 191, 36, 0.4));
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
+  background: linear-gradient(180deg, rgba(var(--color-accent-rgb), 0.9), rgba(var(--color-accent-rgb), 0.4));
+  box-shadow: 0 0 12px rgba(var(--color-accent-rgb), 0.45);
 }
 
 .feature-dot {
@@ -389,8 +389,8 @@ onUnmounted(() => {
   height: 6px;
   margin-top: 6px;
   border-radius: 999px;
-  background: rgba(251, 191, 36, 0.75);
-  box-shadow: 0 0 6px rgba(251, 191, 36, 0.6);
+  background: rgba(var(--color-accent-rgb), 0.75);
+  box-shadow: 0 0 6px rgba(var(--color-accent-rgb), 0.6);
   flex-shrink: 0;
 }
 
@@ -407,7 +407,7 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   height: 100%;
-  background: linear-gradient(90deg, rgba(251, 191, 36, 0.6), rgba(251, 191, 36, 0.2));
+  background: linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.6), rgba(var(--color-accent-rgb), 0.2));
 }
 
 .range-ticks {
@@ -443,8 +443,8 @@ onUnmounted(() => {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: rgb(251, 191, 36);
-  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.18), 0 0 12px rgba(251, 191, 36, 0.45);
+  background: var(--color-accent-dark);
+  box-shadow: 0 0 0 6px rgba(var(--color-accent-rgb), 0.18), 0 0 12px rgba(var(--color-accent-rgb), 0.45);
   border: 2px solid rgba(0, 0, 0, 0.6);
 }
 
@@ -452,8 +452,8 @@ onUnmounted(() => {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: rgb(251, 191, 36);
-  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.18), 0 0 12px rgba(251, 191, 36, 0.45);
+  background: var(--color-accent-dark);
+  box-shadow: 0 0 0 6px rgba(var(--color-accent-rgb), 0.18), 0 0 12px rgba(var(--color-accent-rgb), 0.45);
   border: 2px solid rgba(0, 0, 0, 0.6);
 }
 

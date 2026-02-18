@@ -70,13 +70,13 @@ onUnmounted(() => {
   >
     <div class="pointer-events-none absolute inset-0">
       <div
-        class="absolute -top-24 left-1/2 h-[38rem] w-[38rem] rounded-full bg-white/5 blur-3xl"
+        class="absolute -top-24 left-1/2 h-[38rem] w-[38rem] rounded-full bg-light/5 blur-3xl"
         :style="{
           transform: `translate3d(-50%, ${parallaxY * 0.6}px, 0)`
         }"
       />
       <div
-        class="absolute -bottom-28 right-[-10%] h-[28rem] w-[28rem] rounded-full bg-white/5 blur-3xl"
+        class="absolute -bottom-28 right-[-10%] h-[28rem] w-[28rem] rounded-full bg-light/5 blur-3xl"
         :style="{
           transform: `translate3d(0, ${-parallaxY * 0.4}px, 0)`
         }"
@@ -94,7 +94,7 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <div class="hero-fade hidden lg:flex flex-col gap-3 text-xs uppercase tracking-[0.3em] text-white/60" style="transition-delay: 180ms">
+        <div class="hero-fade hidden lg:flex flex-col gap-3 text-xs uppercase tracking-[0.3em] text-light-60" style="transition-delay: 180ms">
           <button class="group flex items-center gap-2 text-left">
             <span class="text-white">•</span>01 About Us
           </button>
@@ -115,7 +115,7 @@ onUnmounted(() => {
           <h1 class="hero-fade text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl" style="transition-delay: 220ms">
             Culture moves faster than your strategy.
           </h1>
-          <p class="hero-fade max-w-2xl text-base text-white/70 sm:text-lg" style="transition-delay: 280ms">
+          <p class="hero-fade max-w-2xl text-base text-light-70 sm:text-lg" style="transition-delay: 280ms">
             We bridge the gap between brands and the generation that drives
             them. No fluff. Just impact.
           </p>
@@ -130,7 +130,7 @@ onUnmounted(() => {
         </div>
 
         <button
-          class="hero-fade flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/60 transition hover:text-white"
+          class="hero-fade flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-light-60 transition hover:text-white"
           style="transition-delay: 380ms"
           @click="scrollToExplore"
         >

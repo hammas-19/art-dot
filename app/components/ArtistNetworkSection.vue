@@ -76,9 +76,9 @@ onUnmounted(() => {
     :class="{ 'is-visible': isVisible }"
   >
     <div class="mx-auto max-w-[120rem] px-6 py-20 lg:px-16 lg:py-28">
-      <div class="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between">
+      <div class="flex flex-col gap-10 border-b border-light/10 pb-10 lg:flex-row lg:items-start lg:justify-between">
         <div class="space-y-4">
-          <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-amber-300/80">
+          <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
             The Network
           </p>
           <h2 class="text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -90,17 +90,17 @@ onUnmounted(() => {
         <div class="grid gap-10 text-right sm:grid-cols-2">
           <div>
             <p class="text-4xl font-semibold text-white sm:text-5xl">
-              3.83<span class="text-amber-300">M</span>
+              3.83<span class="text-accent">M</span>
             </p>
-            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-white/50">
+            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-light-50">
               Avg Reach / Event
             </p>
           </div>
           <div>
             <p class="text-4xl font-semibold text-white sm:text-5xl">
-              22.97<span class="text-amber-300">M+</span>
+              22.97<span class="text-accent">M+</span>
             </p>
-            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-white/50">
+            <p class="mt-2 text-[11px] uppercase tracking-[0.35em] text-light-50">
               Total Impressions
             </p>
           </div>
@@ -111,7 +111,7 @@ onUnmounted(() => {
         <article
           v-for="(artist, index) in artists"
           :key="artist.handle"
-          class="artist-card group relative overflow-hidden border border-white/10"
+          class="artist-card group relative overflow-hidden border border-light/10"
           :class="index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'"
           :style="{ '--delay': `${index * 90}ms` }"
         >
@@ -122,10 +122,10 @@ onUnmounted(() => {
               class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-70 via-dark-40 to-dark/10" />
           </div>
 
-          <span class="absolute left-4 top-4 rounded-full bg-black/70 px-2.5 py-1 text-[0.55rem] uppercase tracking-[0.25em] text-white/75">
+          <span class="absolute left-4 top-4 rounded-full bg-dark-70 px-2.5 py-1 text-[0.55rem] uppercase tracking-[0.25em] text-white/75">
             {{ artist.handle.toUpperCase() }}
           </span>
 

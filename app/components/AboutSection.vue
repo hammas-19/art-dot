@@ -51,8 +51,8 @@ onUnmounted(() => {
     <div class="mx-auto max-w-[110rem] px-8 py-20 lg:px-16 lg:py-28">
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start">
         <div class="space-y-6">
-          <div class="fade-in flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-white/60" style="transition-delay: 80ms">
-            <span class="h-px w-10 bg-amber-300/80" />
+          <div class="fade-in flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-light-60" style="transition-delay: 80ms">
+            <span class="h-px w-10 bg-accent/80" />
             <span>01 — WHO WE ARE</span>
           </div>
         </div>
@@ -61,10 +61,10 @@ onUnmounted(() => {
           class="space-y-6 lg:pl-12"
           :style="{ transform: `translate3d(0, ${-parallaxY * 0.2}px, 0)` }"
         >
-          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-white/85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
+          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
             {{ denseText }}
           </p>
-          <p class="fade-in text-[11px] font-medium uppercase tracking-[0.4em] text-white/45" style="transition-delay: 260ms">
+          <p class="fade-in text-[11px] font-medium uppercase tracking-[0.4em] text-light-45" style="transition-delay: 260ms">
             {{ secondaryText }}
           </p>
         </div>

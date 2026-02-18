@@ -110,8 +110,8 @@ onUnmounted(() => {
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col gap-6">
-        <div class="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-amber-300/80">
-          <span class="h-px w-10 bg-amber-300/80" />
+        <div class="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
+          <span class="h-px w-10 bg-accent/80" />
           <span>03 — REACH & IMPACT</span>
         </div>
       </div>
@@ -120,23 +120,23 @@ onUnmounted(() => {
         <div
           v-for="(stat, index) in stats"
           :key="stat.label"
-          class="stat-card group flex flex-col items-center justify-center border border-white/10 bg-white/5 px-8 py-10 text-center"
+          class="stat-card group flex flex-col items-center justify-center border border-light/10 bg-light/5 px-8 py-10 text-center"
           :class="{ 'stat-animate': isVisible }"
           :style="{ '--delay': `${index * 90}ms` }"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
           <p class="text-5xl font-semibold tracking-tight text-white sm:text-6xl">
-            <span class="transition-colors duration-300 group-hover:text-amber-300">{{ animatedValues[index] }}</span>
-            <span class="text-amber-300 transition-colors duration-300 group-hover:text-white">{{ stat.suffix }}</span>
+            <span class="transition-colors duration-300 group-hover:text-accent">{{ animatedValues[index] }}</span>
+            <span class="text-accent transition-colors duration-300 group-hover:text-white">{{ stat.suffix }}</span>
           </p>
-          <p class="mt-4 text-xs uppercase tracking-[0.32em] text-white/50">
+          <p class="mt-4 text-xs uppercase tracking-[0.32em] text-light-50">
             {{ stat.label }}
           </p>
         </div>
       </div>
 
-      <p class="mt-12 text-[11px] uppercase tracking-[0.35em] text-white/45">
+      <p class="mt-12 text-[11px] uppercase tracking-[0.35em] text-light-45">
         Delivering real impressive results through data led strategies
       </p>
     </div>
@@ -159,8 +159,8 @@ onUnmounted(() => {
   inset: 0;
   background: radial-gradient(
     700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
-    rgba(255, 196, 70, 0.2),
-    rgba(255, 196, 70, 0.04) 45%,
+    rgba(var(--color-accent-glow-rgb), 0.2),
+    rgba(var(--color-accent-glow-rgb), 0.04) 45%,
     transparent 70%
   );
   opacity: 0;

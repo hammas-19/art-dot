@@ -53,11 +53,11 @@ onUnmounted(() => {
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(208, 252, 77, 0.35);
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.95),
-    0 0 18px rgba(255, 255, 255, 0.35),
-    0 0 40px rgba(255, 255, 255, 0.2);
+    0 0 0 2px rgba(208, 252, 77, 0.95),
+    0 0 18px rgba(208, 252, 77, 0.35),
+    0 0 40px rgba(208, 252, 77, 0.2);
   transform: translate3d(
     calc(var(--x) * 1px - (var(--cursor-size) / 2)),
     calc(var(--y) * 1px - (var(--cursor-size) / 2)),
@@ -71,18 +71,18 @@ onUnmounted(() => {
 .cursor-follower::after {
   content: "";
   position: absolute;
-  inset: -10px;
+  inset: -16px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 2px solid rgba(208, 252, 77, 0.45);
   opacity: 0.7;
 }
 
 .cursor-follower.is-hovering {
   --cursor-size: 34px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(208, 252, 77, 0.2);
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 1),
-    0 0 24px rgba(255, 255, 255, 0.5),
-    0 0 60px rgba(255, 255, 255, 0.35);
+    0 0 0 2px rgba(208, 252, 77, 1),
+    0 0 24px rgba(208, 252, 77, 0.5),
+    0 0 60px rgba(208, 252, 77, 0.35);
 }
 </style>

@@ -35,8 +35,8 @@ onUnmounted(() => {
     :class="{ 'is-visible': isVisible }"
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
-      <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-amber-300/80">
-        <span class="inline-block h-px w-8 bg-amber-300/70" />
+      <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-accent/80">
+        <span class="inline-block h-px w-8 bg-accent/70" />
         To partner with us
       </div>
 
@@ -58,27 +58,27 @@ onUnmounted(() => {
 
       <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
         <div class="space-y-4">
-          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Get in touch</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent/80">Get in touch</p>
           <a
             href="mailto:Enquiry@artdotagency.co.uk"
-            class="text-3xl font-semibold text-white/90 transition hover:text-amber-200 lg:text-4xl"
+            class="text-3xl font-semibold text-light transition hover:text-accent-hover lg:text-4xl"
           >
             Enquiry@artdotagency.co.uk
           </a>
         </div>
 
         <div class="space-y-4">
-          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Visit us</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent/80">Visit us</p>
           <a
             href="https://artdotquarter.io"
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center gap-2 text-xl font-semibold text-white/90 transition hover:text-amber-200 lg:text-2xl"
+            class="inline-flex items-center gap-2 text-xl font-semibold text-light transition hover:text-accent-hover lg:text-2xl"
           >
             artdotquarter.io
-            <span class="text-amber-300">↗</span>
+            <span class="text-accent">↗</span>
           </a>
-          <p class="text-base uppercase tracking-[0.3em] text-white/50">
+          <p class="text-base uppercase tracking-[0.3em] text-light-50">
             14-15 Allison Street, Birmingham
             <br />
             United Kingdom
@@ -86,7 +86,7 @@ onUnmounted(() => {
         </div>
 
         <div class="space-y-4 lg:text-right">
-          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300/80">Follow us</p>
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent/80">Follow us</p>
           <div class="flex items-center gap-3 lg:justify-end">
             <a href="#" class="social-chip" aria-label="Instagram">IG</a>
             <a href="#" class="social-chip" aria-label="Facebook">FB</a>
@@ -97,11 +97,11 @@ onUnmounted(() => {
 
       <div class="mt-12 border-t border-white/10" />
 
-      <div class="mt-8 flex flex-col gap-6 text-xs uppercase tracking-[0.35em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      <div class="mt-8 flex flex-col gap-6 text-xs uppercase tracking-[0.35em] text-light-45 sm:flex-row sm:items-center sm:justify-between">
         <span>© 2026 artdotagency. All Rights Reserved.</span>
         <button
           type="button"
-          class="inline-flex items-center gap-2 text-amber-300 transition hover:text-amber-200"
+          class="inline-flex items-center gap-2 text-accent transition hover:text-accent-hover"
           @click="scrollToTop"
         >
           Back to top ↑
@@ -134,18 +134,18 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgb(251, 191, 36);
+  background: var(--color-accent-dark);
   color: #111;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 12px 26px rgba(251, 191, 36, 0.2);
+  box-shadow: 0 12px 26px rgba(var(--color-accent-rgb), 0.2);
 }
 
 .social-chip:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 34px rgba(251, 191, 36, 0.35);
+  box-shadow: 0 18px 34px rgba(var(--color-accent-rgb), 0.35);
 }
 </style>

@@ -1,6 +1,177 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
+/* ========================================
+   Brand Color System
+   ======================================== */
+:root {
+	/* Accent Colors (Lime/Green-Yellow) */
+	--color-accent-primary: #d0fc4d; 
+	--color-accent-hover: #e4fb9f; 
+	--color-accent-dark: #b2e944; 
+	
+	/* Accent Color RGB values for rgba() usage in styles */
+	--color-accent-rgb: 178, 233, 68; /* rgb values for dark accent #b2e944 */
+	--color-accent-glow-rgb: 208, 252, 77; /* rgb values for primary accent #d0fc4d - used in glow effects */
+}
+
+/* Accent Color Utilities */
+.text-accent {
+	color: var(--color-accent-primary);
+}
+.text-accent-hover {
+	color: var(--color-accent-hover);
+}
+.bg-accent {
+	background-color: var(--color-accent-primary);
+}
+.bg-accent-hover {
+	background-color: var(--color-accent-hover);
+}
+.bg-accent-dark {
+	background-color: var(--color-accent-dark);
+}
+.bg-accent-dark\/90 {
+	background-color: rgb(178 233 68 / 0.9);
+}
+.border-accent {
+	border-color: var(--color-accent-primary);
+}
+
+/* Accent Color with Opacity Variants */
+.text-accent\/90 {
+	color: rgb(208 252 77 / 0.9);
+}
+.text-accent\/80 {
+	color: rgb(208 252 77 / 0.8);
+}
+.text-accent\/70 {
+	color: rgb(208 252 77 / 0.7);
+}
+.bg-accent\/90 {
+	background-color: rgb(208 252 77 / 0.9);
+}
+.bg-accent\/10 {
+	background-color: rgb(208 252 77 / 0.1);
+}
+.border-accent\/70 {
+	border-color: rgb(208 252 77 / 0.7);
+}
+.border-accent\/60 {
+	border-color: rgb(208 252 77 / 0.6);
+}
+.border-accent\/40 {
+	border-color: rgb(208 252 77 / 0.4);
+}
+
+/* Light Grey Colors (white with opacity) - for text */
+.text-light {
+	color: rgb(255 255 255 / 0.9);
+}
+.text-light-85 {
+	color: rgb(255 255 255 / 0.85);
+}
+.text-light-80 {
+	color: rgb(255 255 255 / 0.8);
+}
+.text-light-70 {
+	color: rgb(255 255 255 / 0.7);
+}
+.text-light-65 {
+	color: rgb(255 255 255 / 0.65);
+}
+.text-light-60 {
+	color: rgb(255 255 255 / 0.6);
+}
+.text-light-50 {
+	color: rgb(255 255 255 / 0.5);
+}
+.text-light-45 {
+	color: rgb(255 255 255 / 0.45);
+}
+.text-light-40 {
+	color: rgb(255 255 255 / 0.4);
+}
+
+/* Light Grey Colors - for backgrounds */
+.bg-light {
+	background-color: rgb(255 255 255 / 0.9);
+}
+.bg-light\/10 {
+	background-color: rgb(255 255 255 / 0.1);
+}
+.bg-light\/5 {
+	background-color: rgb(255 255 255 / 0.05);
+}
+
+/* Light Grey Colors - for borders */
+.border-light {
+	border-color: rgb(255 255 255 / 0.4);
+}
+.border-light\/30 {
+	border-color: rgb(255 255 255 / 0.3);
+}
+.border-light\/20 {
+	border-color: rgb(255 255 255 / 0.2);
+}
+.border-light\/15 {
+	border-color: rgb(255 255 255 / 0.15);
+}
+.border-light\/10 {
+	border-color: rgb(255 255 255 / 0.1);
+}
+
+/* Dark Grey Colors (black with opacity) - for backgrounds */
+.bg-dark {
+	background-color: rgb(0 0 0 / 0.9);
+}
+.bg-dark-85 {
+	background-color: rgb(0 0 0 / 0.85);
+}
+.bg-dark-80 {
+	background-color: rgb(0 0 0 / 0.8);
+}
+.bg-dark-75 {
+	background-color: rgb(0 0 0 / 0.75);
+}
+.bg-dark-70 {
+	background-color: rgb(0 0 0 / 0.7);
+}
+.bg-dark-60 {
+	background-color: rgb(0 0 0 / 0.6);
+}
+.bg-dark-40 {
+	background-color: rgb(0 0 0 / 0.4);
+}
+
+/* Dark Grey Colors - for text */
+.text-dark-60 {
+	color: rgb(0 0 0 / 0.6);
+}
+
+/* Hover state combinations */
+.hover\:text-accent-hover:hover {
+	color: var(--color-accent-hover);
+}
+.hover\:bg-accent-hover:hover {
+	background-color: var(--color-accent-hover);
+}
+.hover\:border-accent\/60:hover {
+	border-color: rgb(208 252 77 / 0.6);
+}
+.hover\:border-accent\/40:hover {
+	border-color: rgb(208 252 77 / 0.4);
+}
+.hover\:bg-accent\/10:hover {
+	background-color: rgb(208 252 77 / 0.1);
+}
+.hover\:text-light-80:hover {
+	color: rgb(255 255 255 / 0.8);
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
 html.lenis,
 html.lenis body {
 	height: auto;

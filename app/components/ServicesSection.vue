@@ -48,15 +48,15 @@ onUnmounted(() => {
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
         <div class="space-y-6">
-          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
-            <span class="inline-block h-px w-8 bg-amber-300/70" />
+          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent">
+            <span class="inline-block h-px w-8 bg-accent/70" />
             06 — Services
           </div>
           <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Creative</span>
-            <span class="text-amber-300"> Services</span>
+            <span class="text-accent"> Services</span>
           </h2>
-          <div class="max-w-sm border-l border-white/10 pl-4 text-[0.75rem] uppercase tracking-[0.35em] text-white/50">
+          <div class="max-w-sm border-l border-light/10 pl-4 text-[0.75rem] uppercase tracking-[0.35em] text-light-50">
             Bespoke solutions bridging the gap between brands and culture.
           </div>
         </div>
@@ -66,10 +66,10 @@ onUnmounted(() => {
             v-for="(service, index) in services"
             :key="service.id"
             type="button"
-            class="service-row flex w-full items-center justify-between gap-6 border border-white/10 bg-white/5 px-6 py-5 text-left text-lg font-semibold uppercase tracking-[0.25em] text-white/80 transition lg:text-xl"
+            class="service-row flex w-full items-center justify-between gap-6 border border-light/10 bg-light/5 px-6 py-5 text-left text-lg font-semibold uppercase tracking-[0.25em] text-light-80 transition lg:text-xl"
             :class="{
               'is-active': activeIndex === index,
-              'hover:border-amber-300/40 hover:bg-amber-300/10 hover:text-amber-200': true
+              'hover:border-accent/40 hover:bg-accent/10 hover:text-accent-hover': true
             }"
             :style="{ '--delay': `${index * 90}ms` }"
             @mouseenter="activeIndex = index"
@@ -96,9 +96,9 @@ onUnmounted(() => {
 }
 
 .service-row.is-active {
-  border-color: rgba(251, 191, 36, 0.6);
-  background: linear-gradient(90deg, rgba(251, 191, 36, 0.12) 0%, rgba(0, 0, 0, 0.2) 70%);
-  color: rgba(251, 191, 36, 0.95);
+  border-color: rgba(var(--color-accent-rgb), 0.6);
+  background: linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.12) 0%, rgba(0, 0, 0, 0.2) 70%);
+  color: rgba(var(--color-accent-rgb), 0.95);
 }
 
 .service-label {

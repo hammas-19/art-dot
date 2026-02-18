@@ -86,15 +86,15 @@ onUnmounted(() => {
           </div>
           <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Unfiltered
-            <span class="block text-white/60">Culture.</span>
+            <span class="block text-light-60">Culture.</span>
           </h2>
-          <p class="max-w-xl text-lg text-white/60 sm:text-xl">
+          <p class="max-w-xl text-lg text-light-60 sm:text-xl">
             No scripts. No storyboards. Just raw moments from the artists and
             events shaping the timeline right now.
           </p>
           <button
             type="button"
-            class="inline-flex items-center gap-4 rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-amber-200"
+            class="inline-flex items-center gap-4 rounded-full bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-accent-hover"
           >
             Watch The Feed
             <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">

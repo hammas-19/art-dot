@@ -124,8 +124,8 @@ onUnmounted(() => {
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col gap-6">
-        <div class="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-amber-300/80">
-          <span class="h-px w-10 bg-amber-300/80" />
+        <div class="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
+          <span class="h-px w-10 bg-accent/80" />
           <span>02 — CAPABILITIES</span>
         </div>
       </div>
@@ -134,24 +134,24 @@ onUnmounted(() => {
         <article
           v-for="(capability, index) in capabilities"
           :key="capability.number"
-          class="cap-card group min-h-[28rem] border border-white/10 bg-white/5 p-10 transition"
+          class="cap-card group min-h-[28rem] border border-light/10 bg-light/5 p-10 transition"
           :style="{ '--delay': `${index * 120}ms` }"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
-          <span class="pointer-events-none absolute right-6 top-4 text-[5rem] font-semibold tracking-[0.08em] text-white/10">
+          <span class="pointer-events-none absolute right-6 top-4 text-[5rem] font-semibold tracking-[0.08em] text-light/10">
             {{ capability.number }}
           </span>
           <div class="space-y-4">
             <div class="space-y-3">
               <p class="text-3xl font-semibold uppercase tracking-tight text-white">{{ capability.title }}</p>
-              <span class="block h-0.5 w-12 origin-left scale-x-[0.4] bg-amber-300/85 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+              <span class="block h-0.5 w-12 origin-left scale-x-[0.4] bg-accent/85 transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </div>
           </div>
 
-          <ul class="mt-6 space-y-3 text-base uppercase tracking-[0.08em] text-white/70">
+          <ul class="mt-6 space-y-3 text-base uppercase tracking-[0.08em] text-light-70">
             <li v-for="service in capability.services" :key="service" class="flex gap-2">
-              <span class="mt-2 h-1.5 w-1.5 rounded-sm bg-amber-300/90 transition-transform transition-shadow duration-300 group-hover:scale-[1.1] group-hover:shadow-[0_0_12px_rgba(255,196,70,0.75)]" />
+              <span class="mt-2 h-1.5 w-1.5 rounded-sm bg-accent/90 transition-transform transition-shadow duration-300 group-hover:scale-[1.1] group-hover:shadow-[0_0_12px_rgba(255,196,70,0.75)]" />
               <span>{{ service }}</span>
             </li>
           </ul>
@@ -177,8 +177,8 @@ onUnmounted(() => {
   inset: 0;
   background: radial-gradient(
     700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
-    rgba(255, 196, 70, 0.22),
-    rgba(255, 196, 70, 0.04) 45%,
+    rgba(var(--color-accent-glow-rgb), 0.22),
+    rgba(var(--color-accent-glow-rgb), 0.04) 45%,
     transparent 70%
   );
   opacity: 0;

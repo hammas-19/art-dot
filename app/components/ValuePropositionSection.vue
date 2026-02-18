@@ -125,12 +125,12 @@ onUnmounted(() => {
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col items-start gap-6">
-        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent">
           07 — Value Proposition
         </p>
         <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Why Partner</span>
-          <span class="text-amber-300"> With Us?</span>
+          <span class="text-accent"> With Us?</span>
         </h2>
       </div>
 
@@ -138,7 +138,7 @@ onUnmounted(() => {
         <article
           v-for="(item, index) in values"
           :key="item.id"
-          class="value-card group relative overflow-hidden border border-white/10 bg-white/5 p-10 transition"
+          class="value-card group relative overflow-hidden border border-light/10 bg-light/5 p-10 transition"
           :style="{ '--delay': `${index * 90}ms` }"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
@@ -146,10 +146,10 @@ onUnmounted(() => {
           <div class="icon-box">
             <span class="text-lg">{{ item.icon }}</span>
           </div>
-          <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.3em] text-white/80 lg:text-xl">
+          <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.3em] text-light-80 lg:text-xl">
             {{ item.title }}
           </h3>
-          <p class="mt-3 text-base text-white/60">
+          <p class="mt-3 text-base text-light-60">
             {{ item.description }}
           </p>
         </article>
@@ -173,8 +173,8 @@ onUnmounted(() => {
   inset: 0;
   background: radial-gradient(
     700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
-    rgba(255, 196, 70, 0.22),
-    rgba(255, 196, 70, 0.04) 45%,
+    rgba(var(--color-accent-glow-rgb), 0.22),
+    rgba(var(--color-accent-glow-rgb), 0.04) 45%,
     transparent 70%
   );
   opacity: 0;
@@ -208,7 +208,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(251, 191, 36, 0.9);
+  color: rgba(var(--color-accent-rgb), 0.9);
   background: rgba(255, 255, 255, 0.04);
 }
 </style>

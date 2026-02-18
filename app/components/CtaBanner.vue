@@ -44,13 +44,13 @@ onUnmounted(() => {
         <h2 class="cta-fade text-4xl font-semibold uppercase tracking-tight sm:text-5xl lg:text-6xl">
           Seen Enough?
         </h2>
-        <p class="cta-fade max-w-3xl text-sm uppercase tracking-[0.2em] text-black/60 sm:text-base">
+        <p class="cta-fade max-w-3xl text-sm uppercase tracking-[0.2em] text-dark-60 sm:text-base">
           You've seen the numbers. You've seen the reach. Now stop watching and
           start dominating.
         </p>
         <a
           href="mailto:Enquiry@artdotagency.co.uk"
-          class="cta-fade inline-flex items-center justify-center gap-3 bg-amber-300 px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-amber-200"
+          class="cta-fade inline-flex items-center justify-center gap-3 bg-accent px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-accent-hover"
         >
           Start a Project
           <span aria-hidden="true">→</span>

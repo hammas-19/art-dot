@@ -130,18 +130,18 @@ onUnmounted(() => {
     :class="{ 'is-visible': isVisible }"
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
-      <div class="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex flex-col gap-10 border-b border-light/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
         <div class="space-y-4">
-          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-amber-300">
-            <span class="inline-block h-px w-8 bg-amber-300/70" />
+          <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent">
+            <span class="inline-block h-px w-8 bg-accent/70" />
             05 — Methodology
           </div>
           <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Our</span>
-            <span class="text-amber-300"> Process</span>
+            <span class="text-accent"> Process</span>
           </h2>
         </div>
-        <p class="max-w-sm text-[0.75rem] uppercase tracking-[0.4em] text-white/50 lg:text-right">
+        <p class="max-w-sm text-[0.75rem] uppercase tracking-[0.4em] text-light-50 lg:text-right">
           A strategic framework for scalable growth.
         </p>
       </div>
@@ -150,19 +150,19 @@ onUnmounted(() => {
         <article
           v-for="(step, index) in steps"
           :key="step.id"
-          class="process-card group relative overflow-hidden border border-white/10 bg-white/5 p-10 transition"
+          class="process-card group relative overflow-hidden border border-light/10 bg-light/5 p-10 transition"
           :style="{ '--delay': `${index * 90}ms` }"
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
           <div class="relative space-y-4">
-            <div class="text-xs font-semibold uppercase tracking-[0.35em] text-amber-300/80 transition-colors duration-300 group-hover:text-amber-300">
+            <div class="text-xs font-semibold uppercase tracking-[0.35em] text-accent/80 transition-colors duration-300 group-hover:text-accent">
               {{ step.number }}
             </div>
-            <h3 class="text-2xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-amber-300 lg:text-3xl">
+            <h3 class="text-2xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-accent lg:text-3xl">
               {{ step.title }}
             </h3>
-            <p class="text-base leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-white/80">
+            <p class="text-base leading-relaxed text-light-60 transition-colors duration-300 group-hover:text-light-80">
               {{ step.description }}
             </p>
           </div>
@@ -187,8 +187,8 @@ onUnmounted(() => {
   inset: 0;
   background: radial-gradient(
     700px circle at var(--glow-x, 30%) var(--glow-y, 30%),
-    rgba(255, 196, 70, 0.22),
-    rgba(255, 196, 70, 0.04) 45%,
+    rgba(var(--color-accent-glow-rgb), 0.22),
+    rgba(var(--color-accent-glow-rgb), 0.04) 45%,
     transparent 70%
   );
   opacity: 0;
