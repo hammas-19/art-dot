@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
 @import "tailwindcss";
 
 /* ========================================
@@ -178,7 +178,7 @@ html.lenis body {
 }
 
 body {
-	font-family: "Sora", "Helvetica Neue", Arial, sans-serif;
+	font-family: "Google Sans", "Helvetica Neue", Arial, sans-serif;
 	letter-spacing: 0.01em;
 	text-rendering: optimizeLegibility;
 }
@@ -189,7 +189,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Sora", "Helvetica Neue", Arial, sans-serif;
+	font-family: "Google Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 .lenis.lenis-smooth {

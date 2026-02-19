@@ -41,7 +41,7 @@ onUnmounted(() => {
       </div>
 
       <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <div class="space-y-3">
+        <div class="">
           <h2 class="thank-title thank-animate font-semibold uppercase tracking-tight">
             Thank
           </h2>
