@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type ValuePoint = {
   id: number;
@@ -100,6 +101,9 @@ const handleCardLeave = (event: MouseEvent) => {
   target.style.removeProperty("--glow-y");
 };
 
+// Apply GSAP text animation
+useTextAnimation(".value-proposition-heading");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -128,7 +132,7 @@ onUnmounted(() => {
         <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent">
           07 — Value Proposition
         </p>
-        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+        <h2 class="value-proposition-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Why Partner</span>
           <span class="text-accent"> With Us?</span>
         </h2>

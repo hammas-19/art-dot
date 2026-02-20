@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type ServiceItem = {
   id: number;
@@ -21,6 +22,10 @@ const activeIndex = ref(1);
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animations
+useTextAnimation(".services-heading");
+useTextAnimation(".service-label");
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -46,13 +51,13 @@ onUnmounted(() => {
     :class="{ 'is-visible': isVisible }"
   >
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
-      <div class="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+      <div class="grid gap-5 lg:grid-cols-3">
         <div class="space-y-6">
           <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent">
             <span class="inline-block h-px w-8 bg-accent/70" />
             06 — Services
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 class="services-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Creative</span>
             <span class="text-accent"> Services</span>
           </h2>
@@ -61,21 +66,21 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div class="space-y-4">
-          <button
+        <div class="space-y-4 lg:col-span-2">
+          <div
             v-for="(service, index) in services"
             :key="service.id"
             type="button"
-            class="service-row flex w-full items-center justify-between gap-6 border border-light/10 bg-light/5 px-6 py-5 text-left text-lg font-semibold uppercase tracking-[0.25em] text-light-80 transition lg:text-xl"
+            class="service-row flex w-full items-center justify-between gap-6  border-light/10 bg-light/5 px-6 py-5 text-left text-lg uppercase  text-light-80 transition lg:text-xl xl:text-5xl"
             :class="{
               'is-active': activeIndex === index,
-              'hover:border-accent/40 hover:bg-accent/10 hover:text-accent-hover': true
+              'hover:bg-accent/10 hover:text-accent-hover': true
             }"
             :style="{ '--delay': `${index * 90}ms` }"
             @mouseenter="activeIndex = index"
           >
-            <span class="service-label">{{ service.title }}</span>
-          </button>
+            <p class="service-label">{{ service.title }}</p>
+          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animations
+useTextAnimation(".thank-you-text");
+useTextAnimation(".footer-email");
+useTextAnimation(".footer-website");
 
 const scrollToTop = () => {
   if (typeof window === "undefined") return;
@@ -42,10 +48,10 @@ onUnmounted(() => {
 
       <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div class="">
-          <h2 class="thank-title thank-animate font-semibold uppercase tracking-tight">
+          <h2 class="thank-you-text thank-title thank-animate font-semibold uppercase tracking-tight">
             Thank
           </h2>
-          <h2 class="thank-title thank-animate font-semibold uppercase tracking-tight">
+          <h2 class="thank-you-text thank-title thank-animate font-semibold uppercase tracking-tight">
             You
           </h2>
         </div>
@@ -61,7 +67,7 @@ onUnmounted(() => {
           <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent/80">Get in touch</p>
           <a
             href="mailto:Enquiry@artdotagency.co.uk"
-            class="text-3xl font-semibold text-light transition hover:text-accent-hover lg:text-4xl"
+            class="footer-email text-3xl font-semibold text-light transition hover:text-accent-hover lg:text-4xl"
           >
             Enquiry@artdotagency.co.uk
           </a>
@@ -73,7 +79,7 @@ onUnmounted(() => {
             href="https://artdotquarter.io"
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center gap-2 text-xl font-semibold text-light transition hover:text-accent-hover lg:text-2xl"
+            class="footer-website inline-flex items-center gap-2 text-xl font-semibold text-light transition hover:text-accent-hover lg:text-2xl"
           >
             artdotquarter.io
             <span class="text-accent">↗</span>

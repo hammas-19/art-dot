@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type PricingPackage = {
   id: number;
@@ -123,6 +124,10 @@ const isVisible = ref(false);
 const selectedTime = ref(12);
 let stopObserver: (() => void) | null = null;
 
+// Apply GSAP text animations
+useTextAnimation(".pricing-heading");
+useTextAnimation(".pricing-package-name");
+
 const timeLabel = computed(() => {
   const hours = Math.floor(selectedTime.value);
   const minutes = Math.round((selectedTime.value - hours) * 60);
@@ -164,7 +169,7 @@ onUnmounted(() => {
     <div class="mx-auto max-w-[110rem] px-6 py-20 lg:px-10 lg:py-28">
       <div class="flex flex-col items-center gap-6 text-center">
         <p class="text-[0.7rem] font-semibold uppercase tracking-[0.5em] text-accent">07 — Pricing</p>
-        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+        <h2 class="pricing-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           <span class="text-white">Packages</span>
           <span class="text-accent"> &amp; Rates</span>
         </h2>
@@ -190,7 +195,7 @@ onUnmounted(() => {
           </div>
           <div class="mt-8 space-y-2 text-center">
             <p class="text-[0.7rem] uppercase tracking-[0.35em] text-light-50">Package</p>
-            <h3 class="text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+            <h3 class="pricing-package-name text-3xl font-semibold tracking-tight text-white lg:text-4xl">
               <span :class="pkg.popular ? 'text-accent' : ''">{{ pkg.name }}</span>
             </h3>
           </div>
@@ -237,7 +242,7 @@ onUnmounted(() => {
               <span>{{ pkg.channel }}</span>
               <span class="text-accent">£{{ pkg.price }}</span>
             </div>
-            <h3 class="mt-6 text-2xl font-semibold uppercase tracking-tight text-white lg:text-3xl">
+            <h3 class="pricing-package-name mt-6 text-2xl font-semibold uppercase tracking-tight text-white lg:text-3xl">
               {{ pkg.name }}
             </h3>
             <p class="mt-2 text-[0.7rem] uppercase tracking-[0.35em] text-light-40">Per hour</p>

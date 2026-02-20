@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const denseText = ref(
   "WE ARE A TEAM OF MIDLANDS BASED MARKETERS & ENTREPRENEURS WITH A COMBINED EXPERIENCE OF OVER 50 YEARS ELEVATING BRANDS FROM A CONCEPT TO A PROLIFIC NAME DELIVERING REAL IMPRESSIVE RESULTS."
@@ -12,6 +13,10 @@ const isVisible = ref(false);
 const parallaxY = ref(0);
 let rafId: number | null = null;
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animations
+useTextAnimation(".about-main-text");
+useTextAnimation(".about-secondary-text");
 
 const updateParallaxOnScroll = () => {
   if (rafId) cancelAnimationFrame(rafId);
@@ -61,10 +66,10 @@ onUnmounted(() => {
           class="space-y-6 lg:pl-12"
           :style="{ transform: `translate3d(0, ${-parallaxY * 0.2}px, 0)` }"
         >
-          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
+          <p class="about-main-text fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
             {{ denseText }}
           </p>
-          <p class="fade-in text-[11px] font-medium uppercase tracking-[0.4em] text-light-45" style="transition-delay: 260ms">
+          <p class="about-secondary-text fade-in text-[11px] font-medium uppercase tracking-[0.4em] text-light-45" style="transition-delay: 260ms">
             {{ secondaryText }}
           </p>
         </div>

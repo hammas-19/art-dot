@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type Capability = {
   number: string;
@@ -99,6 +100,9 @@ const handleCardLeave = (event: MouseEvent) => {
   target.style.removeProperty("--glow-y");
 };
 
+// Apply GSAP animation to services
+useTextAnimation(".capability-service");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -152,7 +156,7 @@ onUnmounted(() => {
           <ul class="mt-6 space-y-3 text-base uppercase tracking-[0.08em] text-light-70">
             <li v-for="service in capability.services" :key="service" class="flex gap-2">
               <span class="mt-2 h-1.5 w-1.5 rounded-sm bg-accent/90 transition-transform transition-shadow duration-300 group-hover:scale-[1.1] group-hover:shadow-[0_0_12px_rgba(255,196,70,0.75)]" />
-              <span>{{ service }}</span>
+              <span class="capability-service">{{ service }}</span>
             </li>
           </ul>
         </article>

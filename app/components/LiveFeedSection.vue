@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
 import gsap from "gsap";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const phoneShellRef = ref<HTMLElement | null>(null);
@@ -10,6 +11,9 @@ let stopObserver: (() => void) | null = null;
 
 const videoId = "dQw4w9WgXcQ";
 const videoEmbedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&mute=1&controls=0&loop=1&playlist=${videoId}`;
+
+// Apply GSAP text animation
+useTextAnimation(".live-feed-heading");
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -84,7 +88,7 @@ onUnmounted(() => {
             <span class="h-2 w-2 rounded-full bg-red-500" />
             Live Feed
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 class="live-feed-heading lg:leading-26 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-9xl">
             Unfiltered
             <span class="block text-light-60">Culture.</span>
           </h2>

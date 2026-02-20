@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
@@ -54,6 +55,9 @@ const handleCardLeave = (event: MouseEvent) => {
   target.style.removeProperty("--glow-y");
 };
 
+// Apply GSAP text animation
+useTextAnimation(".brand-activation-heading");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -87,7 +91,7 @@ onUnmounted(() => {
           <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
             Live Experiences
           </p>
-          <h2 class="mt-6 text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 class="brand-activation-heading mt-6 text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
             Brand
             <br />
             Activation

@@ -1,8 +1,45 @@
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from "vue";
+import { useTextAnimation } from "@/composables/useTextAnimation";
+
+const sectionRef = ref<HTMLElement | null>(null);
+const heroVisible = ref(false);
+const parallaxY = ref(0);
+let rafId: number | null = null;
+
+// Apply GSAP text animations
+useTextAnimation(".hero-heading");
+useTextAnimation(".hero-subtitle");
+
+const updateParallaxOnScroll = () => {
+  if (rafId) cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(() => {
+    parallaxY.value = window.scrollY * 0.12;
+  });
+};
+
+const scrollToExplore = () => {
+  const aboutSection = document.getElementById("section-about");
+  aboutSection?.scrollIntoView({ behavior: "smooth" });
+};
+
+onMounted(() => {
+  heroVisible.value = true;
+  updateParallaxOnScroll();
+  window.addEventListener("scroll", updateParallaxOnScroll, { passive: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateParallaxOnScroll);
+  if (rafId) cancelAnimationFrame(rafId);
+});
+</script>
+
 <template>
   <section
     id="section-hero"
     ref="sectionRef"
-    class="relative min-h-screen bg-gradient-to-t from-[#000000] via-[#000000] to-[#0a0a0a] text-white overflow-hidden"
+    class="relative min-h-screen bg-linear-to-t from-[#000000] via-[#1a1a1a] to-[#2a2a2a] text-white overflow-hidden"
     :class="{ 'is-visible': heroVisible }"
   >
     <!-- Layer 0: interactive circle grid (sits at the very back) -->
@@ -11,18 +48,21 @@
 
 
     <!-- Layer 2: main content — pointer-events-none on wrapper, re-enabled on interactive children -->
-    <div class="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-[110rem] flex-col px-6 py-16 lg:px-10 items-center justify-center">
+    <div
+      class="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-[110rem] flex-col px-6 py-16 lg:px-10 items-center justify-center"
+      :style="{ transform: `translate3d(0, ${parallaxY * 0.2}px, 0)` }"
+    >
       <div class="flex-1 flex flex-col items-center justify-center text-center space-y-8 w-full">
-        <h1 class="fade-in text-5xl font-semibold sm:text-6xl lg:text-7xl xl:text-8xl" style="transition-delay: 100ms">
-          Culture moves faster than your <span class="text-accent">strategy.</span>
+        <h1 class="hero-heading fade-in text-5xl  sm:text-6xl lg:text-7xl" style="transition-delay: 100ms">
+          Culture moves faster <br> than your <span class="text-accent">strategy.</span>
         </h1>
-        <p class="fade-in max-w-3xl text-lg text-light-70 sm:text-xl lg:text-2xl" style="transition-delay: 160ms">
+        <p class="hero-subtitle fade-in max-w-3xl text-lg font-thin uppercase text-light-70 sm:text-xl lg:text-xl" style="transition-delay: 160ms">
           We bridge the gap between brands and the generation that drives them. No fluff. Just impact.
         </p>
         <div class="fade-in flex flex-wrap gap-4 justify-center" style="transition-delay: 220ms">
           <a
             href="#pricing"
-            class="pointer-events-auto inline-flex items-center justify-center gap-2 border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-[0.35em] transition hover:border-white hover:bg-white/5"
+            class="pointer-events-auto inline-flex items-center justify-center gap-2 border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-[0.35em] transition-all duration-500 hover:text-black hover:bg-[#d0fc4d] rounded-full"
           >
             Start a Project <span>→</span>
           </a>
@@ -56,3 +96,16 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.is-visible .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

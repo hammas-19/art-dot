@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const denseText = ref(
   "WE CRAFT STRATEGIC, CREATIVE SOLUTIONS THAT COMBINE SMART IDEAS WITH STUNNING, FUNCTIONAL DESIGN. BY OBSESSING OVER THE DETAILS, WE INSPIRE ACTION AND DELIVER MEASURABLE RESULTS, EMPOWERING BRANDS TO THRIVE IN A DYNAMIC, EVER-EVOLVING MARKETPLACE."
@@ -11,6 +12,9 @@ const isVisible = ref(false);
 const parallaxY = ref(0);
 let rafId: number | null = null;
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animation
+useTextAnimation(".mission-text");
 
 const updateParallaxOnScroll = () => {
   if (rafId) cancelAnimationFrame(rafId);
@@ -53,7 +57,7 @@ onUnmounted(() => {
           class="space-y-6 lg:pr-12"
           :style="{ transform: `translate3d(0, ${-parallaxY * 0.18}px, 0)` }"
         >
-          <p class="fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
+          <p class="mission-text fade-in max-w-3xl text-lg font-light uppercase leading-[1.8] tracking-[0.12em] text-light-85 sm:text-xl lg:text-2xl" style="transition-delay: 200ms">
             {{ denseText }}
           </p>
         </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const brands = [
   "AXEL ARIGATO",
@@ -52,6 +53,9 @@ const handleScroll = () => {
   rafId = requestAnimationFrame(updateMarqueeOnScroll);
 };
 
+// Apply GSAP text animation
+useTextAnimation(".marquee-heading");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -90,7 +94,7 @@ onUnmounted(() => {
         <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-light-60">
           Our Marketing Experience
         </p>
-        <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+        <h2 class="marquee-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           We have extensive experience growing brands.
         </h2>
       </div>

@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animation
+useTextAnimation(".cta-heading");
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -41,7 +45,7 @@ onUnmounted(() => {
 
     <div class="relative mx-auto max-w-[110rem] px-6 py-24 lg:px-16 lg:py-32">
       <div class="flex flex-col items-center gap-6 text-center">
-        <h2 class="cta-fade text-4xl font-semibold uppercase tracking-tight sm:text-5xl lg:text-6xl">
+        <h2 class="cta-heading cta-fade text-4xl font-semibold uppercase tracking-tight sm:text-5xl lg:text-6xl">
           Seen Enough?
         </h2>
         <p class="cta-fade max-w-3xl text-sm uppercase tracking-[0.2em] text-dark-60 sm:text-base">

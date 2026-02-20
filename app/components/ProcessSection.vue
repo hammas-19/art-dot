@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type ProcessStep = {
   id: number;
@@ -57,6 +58,10 @@ const steps: ProcessStep[] = [
 const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
+
+// Apply GSAP text animations
+useTextAnimation(".process-heading");
+useTextAnimation(".process-step-title");
 const glowStates = new WeakMap<HTMLElement, { x: number; y: number; tx: number; ty: number; raf: number | null }>();
 
 const animateGlow = (target: HTMLElement) => {
@@ -136,7 +141,7 @@ onUnmounted(() => {
             <span class="inline-block h-px w-8 bg-accent/70" />
             05 — Methodology
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 class="process-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Our</span>
             <span class="text-accent"> Process</span>
           </h2>
@@ -159,7 +164,7 @@ onUnmounted(() => {
             <div class="text-xs font-semibold uppercase tracking-[0.35em] text-accent/80 transition-colors duration-300 group-hover:text-accent">
               {{ step.number }}
             </div>
-            <h3 class="text-2xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-accent lg:text-3xl">
+            <h3 class="process-step-title text-2xl font-semibold uppercase leading-tight tracking-tight transition-colors duration-300 group-hover:text-accent lg:text-3xl">
               {{ step.title }}
             </h3>
             <p class="text-base leading-relaxed text-light-60 transition-colors duration-300 group-hover:text-light-80">

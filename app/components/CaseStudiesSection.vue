@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type CaseStudy = {
   id: number;
@@ -54,6 +55,9 @@ const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
 
+// Apply GSAP text animation
+useTextAnimation(".case-studies-heading");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -84,7 +88,7 @@ onUnmounted(() => {
             <span class="inline-block h-px w-8 bg-accent/70" />
             04 — Selected Work
           </div>
-          <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 class="case-studies-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="text-white">Featured</span>
             <span class="text-accent"> Case Studies</span>
           </h2>

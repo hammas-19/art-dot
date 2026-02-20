@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
 import { Instagram, Music4 } from "lucide-vue-next";
+import { useTextAnimation } from "@/composables/useTextAnimation";
 
 type Artist = {
   handle: string;
@@ -52,6 +53,9 @@ const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let stopObserver: (() => void) | null = null;
 
+// Apply GSAP text animation
+useTextAnimation(".artist-network-heading");
+
 onMounted(() => {
   const { stop } = useIntersectionObserver(
     sectionRef,
@@ -81,7 +85,7 @@ onUnmounted(() => {
           <p class="text-[11px] font-medium uppercase tracking-[0.36em] text-accent/80">
             The Network
           </p>
-          <h2 class="text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 class="artist-network-heading text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
             Renowned
             <br />
             Artists
