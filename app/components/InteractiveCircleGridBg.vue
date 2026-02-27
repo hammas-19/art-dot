@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ref, onMounted, onUnmounted } from "vue";
 
 const mainRef = ref<HTMLDivElement | null>(null);
-const cellSize = 90;
+const cellSize = 220;
 
 interface Circle {
   id: number;
@@ -33,7 +33,7 @@ const generateCircles = (width: number, height: number) => {
 const handleCircleHover = (e: MouseEvent) => {
   gsap.to(e.currentTarget as HTMLElement, {
     borderRadius: "50%",
-    borderColor: "rgba(255,255,255,0.5)",
+    borderColor: "ffffff0d",
     boxShadow: "0 0 18px 3px #ffffff,0.55), 0 0 40px 10px #ffffff,0.25), inset 0 0 20px #ffffff,0.2)",
     duration: 0.4,
     ease: "power2.out",
@@ -43,7 +43,7 @@ const handleCircleHover = (e: MouseEvent) => {
 const handleCircleLeave = (e: MouseEvent) => {
   gsap.to(e.currentTarget as HTMLElement, {
     borderRadius: "20%",
-    borderColor: "rgba(255,255,255,0.18)",
+    borderColor: "ffffff0d",
     boxShadow: "0 0 0px 0px #ffffff,0)",
     duration: 0.4,
     ease: "power2.inOut",
@@ -86,17 +86,16 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  /* no background here — hero section owns the bg color */
   pointer-events: none; /* container transparent to events… */
 }
 
 .circle-item {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 210px;
+  height: 210px;
   border-radius: 20%;
   transform: translate(-50%, -50%);
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid #dff97a0e;
   box-shadow: 0 0 0px 0px rgba(var(--color-accent-rgb), 0);
   will-change: box-shadow, border-radius, border-color;
   pointer-events: auto; /* …but each cell catches mouse */

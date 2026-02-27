@@ -62,33 +62,33 @@ onUnmounted(() => {
         <div class="fade-in flex flex-wrap gap-4 justify-center" style="transition-delay: 220ms">
           <a
             href="#pricing"
-            class="pointer-events-auto inline-flex items-center justify-center gap-2 border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-[0.35em] transition-all duration-500 hover:text-black hover:bg-[#d0fc4d] rounded-full"
+            class="pointer-events-auto inline-flex items-center justify-center gap-1 sm:gap-2 border border-white/30 px-4 py-2 sm:px-8 sm:py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.35em] transition-all duration-500 hover:text-black hover:bg-[#d0fc4d] rounded-full whitespace-nowrap"
           >
             Start a Project <span>→</span>
           </a>
         </div>
       </div>
 
-      <div class="w-full flex flex-col items-center gap-12 pb-8">
+      <div class="w-full flex flex-col items-center gap-8 sm:gap-12 pb-6 sm:pb-8">
         <button
-          class="pointer-events-auto fade-in flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.35em] text-light-60 transition hover:text-white"
+          class="pointer-events-auto fade-in flex items-center gap-2 sm:gap-3 text-xs sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-light-60 transition hover:text-white px-3 py-2 sm:px-0 sm:py-0"
           style="transition-delay: 280ms"
           @click="scrollToExplore"
         >
           ( Scroll to Explore )
         </button>
 
-        <nav class="fade-in flex items-center gap-8 text-[0.7rem] uppercase tracking-[0.35em] text-light-60" style="transition-delay: 340ms">
-          <button class="pointer-events-auto flex items-center gap-2 hover:text-white transition">
+        <nav class="fade-in flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-light-60 w-full px-2 sm:px-0" style="transition-delay: 340ms">
+          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
             <span class="text-white">•</span>01 About Us
           </button>
-          <button class="pointer-events-auto flex items-center gap-2 hover:text-white transition">
+          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
             <span>•</span>02 Capabilities
           </button>
-          <button class="pointer-events-auto flex items-center gap-2 hover:text-white transition">
+          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
             <span>•</span>03 Reach & Impact
           </button>
-          <button class="pointer-events-auto flex items-center gap-2 hover:text-white transition">
+          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
             <span>•</span>04 Our Process
           </button>
         </nav>

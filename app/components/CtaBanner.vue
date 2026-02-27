@@ -53,7 +53,7 @@ onUnmounted(() => {
           start dominating.
         </p>
         <a
-          href="mailto:Enquiry@artdotagency.co.uk"
+          href="mailto:example"
           class="cta-fade inline-flex items-center justify-center gap-3 bg-accent px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-black transition hover:bg-accent-hover"
         >
           Start a Project

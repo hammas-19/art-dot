@@ -143,7 +143,7 @@ onUnmounted(() => {
           @mousemove="handleCardMove"
           @mouseleave="handleCardLeave"
         >
-          <span class="pointer-events-none absolute right-6 top-4 text-[5rem] font-semibold tracking-[0.08em] text-light/10">
+          <span class="opacity-15 pointer-events-none absolute right-2 top-2 sm:right-6 sm:top-4 text-4xl sm:text-[5rem] font-semibold tracking-[0.08em] text-light/10">
             {{ capability.number }}
           </span>
           <div class="space-y-4">

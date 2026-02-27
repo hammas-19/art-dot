@@ -126,11 +126,11 @@ onUnmounted(() => {
 
          
 
-          <div
+          <!-- <div
             class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 border border-accent/70 bg-accent/10 p-2 text-accent transition duration-300 group-hover:bg-accent group-hover:text-black"
           >
             <span class="text-base">→</span>
-          </div>
+          </div> -->
 
           <div class="case-footer pointer-events-none">
             <h3 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">

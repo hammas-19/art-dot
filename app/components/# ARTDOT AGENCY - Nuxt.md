@@ -1,7 +1,7 @@
 # ARTDOT AGENCY - Nuxt.js Clone Project Specification
 
 ## 🎯 PROJECT OVERVIEW
-Recreate the artdotagency.co.uk website using Nuxt.js 3, Tailwind CSS, and modern Vue.js patterns. The site is a premium creative agency portfolio with smooth animations, 3D effects, and interactive elements.
+Recreate the example website using Nuxt.js 3, Tailwind CSS, and modern Vue.js patterns. The site is a premium creative agency portfolio with smooth animations, 3D effects, and interactive elements.
 
 ## 🛠️ TECH STACK
 
@@ -704,7 +704,7 @@ const selectedTime = ref(12) // 12:00 PM
 - Heading: "To Partner With Us"
 - Contact section:
   - "Get in Touch"
-  - Email: Enquiry@artdotagency.co.uk
+  - Email: example
 - Visit section:
   - Link: artdotquarter.io
   - Address: 14-15 Allison Street, Birmingham, United Kingdom

@@ -66,10 +66,10 @@ onUnmounted(() => {
         <div class="space-y-4">
           <p class="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent/80">Get in touch</p>
           <a
-            href="mailto:Enquiry@artdotagency.co.uk"
+            href="mailto:example"
             class="footer-email text-3xl font-semibold text-light transition hover:text-accent-hover lg:text-4xl"
           >
-            Enquiry@artdotagency.co.uk
+            example
           </a>
         </div>
 

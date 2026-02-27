@@ -4,7 +4,7 @@
     <ClientOnly>
       <CursorFollower />
     </ClientOnly>
-    <NavigationDots />
+    <!-- <NavigationDots /> -->
     <HeroSection />
     <AboutSection />
     <MissionSection />
