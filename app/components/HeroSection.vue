@@ -2,6 +2,14 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import { useTextAnimation } from "@/composables/useTextAnimation";
 
+const scrollToSection = (id: string, event?: Event) => {
+  if (event) event.preventDefault();
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const sectionRef = ref<HTMLElement | null>(null);
 const heroVisible = ref(false);
 const parallaxY = ref(0);
@@ -61,8 +69,9 @@ onUnmounted(() => {
         </p>
         <div class="fade-in flex flex-wrap gap-4 justify-center" style="transition-delay: 220ms">
           <a
-            href="#pricing"
+            href="#section-pricing"
             class="pointer-events-auto inline-flex items-center justify-center gap-1 sm:gap-2 border border-white/30 px-4 py-2 sm:px-8 sm:py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.35em] transition-all duration-500 hover:text-black hover:bg-[#d0fc4d] rounded-full whitespace-nowrap"
+            target="_self"
           >
             Start a Project <span>→</span>
           </a>
@@ -73,24 +82,40 @@ onUnmounted(() => {
         <button
           class="pointer-events-auto fade-in flex items-center gap-2 sm:gap-3 text-xs sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-light-60 transition hover:text-white px-3 py-2 sm:px-0 sm:py-0"
           style="transition-delay: 280ms"
-          @click="scrollToExplore"
+          @click="() => document.getElementById('section-about')?.scrollIntoView({ behavior: 'smooth' })"
         >
           ( Scroll to Explore )
         </button>
 
         <nav class="fade-in flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-light-60 w-full px-2 sm:px-0" style="transition-delay: 340ms">
-          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
+          <a
+            href="#section-about"
+            class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center"
+            @click="(e) => scrollToSection('section-about', e)"
+          >
             <span class="text-white">•</span>01 About Us
-          </button>
-          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
+          </a>
+          <a
+            href="#section-capabilities"
+            class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center"
+            @click="(e) => scrollToSection('section-capabilities', e)"
+          >
             <span>•</span>02 Capabilities
-          </button>
-          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
+          </a>
+          <a
+            href="#section-stats"
+            class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center"
+            @click="(e) => scrollToSection('section-stats', e)"
+          >
             <span>•</span>03 Reach & Impact
-          </button>
-          <button class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center">
+          </a>
+          <a
+            href="#section-process"
+            class="pointer-events-auto flex items-center gap-1 sm:gap-2 hover:text-white transition whitespace-nowrap w-full sm:w-auto justify-center"
+            @click="(e) => scrollToSection('section-process', e)"
+          >
             <span>•</span>04 Our Process
-          </button>
+          </a>
         </nav>
       </div>
     </div>
