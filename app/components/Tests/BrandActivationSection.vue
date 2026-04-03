@@ -148,7 +148,7 @@ onUnmounted(() => {
           <h2 class="brand-activation-heading mt-6 text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
             Brand
             <br />
-            Activation
+            Creation
           </h2>
         </div>
 
@@ -158,7 +158,7 @@ onUnmounted(() => {
           @mouseleave="handleCardLeave"
         >
           <p class="text-lg font-light uppercase leading-relaxed tracking-[0.2em] text-light-70 sm:text-xl">
-            We have hosted cultural events promoting vibrancy with some of the worlds biggest artists.
+            This is a description of the brand activation services offered, highlighting the unique approach and successful outcomes achieved for clients.
           </p>
         </div>
 
@@ -170,13 +170,13 @@ onUnmounted(() => {
           <div>
             <p class="text-5xl font-semibold text-accent sm:text-6xl">{{ eventsCount }}</p>
             <p class="mt-2 text-xs uppercase tracking-[0.3em] text-light-50">
-              Cultural Events Hosted
+              Projects Completed
             </p>
           </div>
           <div>
             <p class="text-5xl font-semibold text-accent sm:text-6xl">{{ attendeesCount }}</p>
             <p class="mt-2 text-xs uppercase tracking-[0.3em] text-light-50">
-              Total Attendees
+              Daily Revenue Generated
             </p>
           </div>
         </div>

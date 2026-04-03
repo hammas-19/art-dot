@@ -23,3 +23,8 @@
     <FooterSection />
   </div>
 </template>
+<script setup>
+onMounted(() => {
+  useRouter().push("/test")
+})
+</script>
