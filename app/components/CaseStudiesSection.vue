@@ -99,10 +99,10 @@ onUnmounted(() => {
       </div>
 
       <div class="mt-12 grid gap-8 lg:grid-cols-2">
-        <a
+        <NuxtLink
           v-for="(study, index) in caseStudies"
           :key="study.id"
-          :href="study.link"
+          :to="study.link"
           class="case-card group relative overflow-hidden border border-light/10 bg-dark-40"
           :style="{ '--delay': `${index * 110}ms` }"
           role="button"
@@ -124,14 +124,6 @@ onUnmounted(() => {
             {{ study.number }}
           </div>
 
-         
-
-          <!-- <div
-            class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 border border-accent/70 bg-accent/10 p-2 text-accent transition duration-300 group-hover:bg-accent group-hover:text-black"
-          >
-            <span class="text-base">→</span>
-          </div> -->
-
           <div class="case-footer pointer-events-none">
             <h3 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
               {{ study.title }}
@@ -140,7 +132,7 @@ onUnmounted(() => {
               {{ study.subtitle }}
             </p>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </section>

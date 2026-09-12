@@ -1,0 +1,231 @@
+[
+  {
+    "slug": "axel-arigato",
+    "title": "AXEL ARIGATO",
+    "subtitle": "Digital Advertising & Global Growth Campaign",
+    "number": "01",
+    "year": "2024",
+    "client": "Axel Arigato AB",
+    "industry": "Luxury Footwear & Ready-to-Wear",
+    "services": ["Paid Social Strategy", "Performance Creative", "Media Buying", "Creative Direction"],
+    "heroImage": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=85",
+    "overview": "Axel Arigato partnered with ART.DOT to architect and deploy a high-cadence digital advertising campaign across key European metropolitan hubs, driving record direct-to-consumer acquisition during peak seasonal drop windows.",
+    "challenge": "Breaking through saturated luxury streetwear feed environments required moving beyond static product lookbooks. The brand needed high-velocity, narrative-driven video assets calibrated for short-form ad units that preserved elevated editorial aesthetics without sacrificing measurable ROAS.",
+    "approach": "We engineered a multi-tier paid acquisition engine combining cinematic runway micro-cuts, creator styling breakdowns, and dynamic catalog retargeting. Custom attribution modeling allowed algorithmic budget reallocation toward highest-converting audience cohorts in real time.",
+    "results": [
+      { "value": 340, "suffix": "%", "label": "ROAS Increase" },
+      { "value": 24, "suffix": "M+", "label": "Paid Impressions" },
+      { "value": 48, "suffix": "%", "label": "Lower CAC" },
+      { "value": 85, "suffix": "k+", "label": "New DTC Customers" }
+    ],
+    "galleryImages": [
+      {
+        "url": "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Sneaker silhouette visual pacing and material texture capture.",
+        "aspect": "aspect-[4/3]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Editorial street-style framing deployed across TikTok & Meta.",
+        "aspect": "aspect-[3/4]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80",
+        "caption": "High-contrast dynamic studio lookbook series.",
+        "aspect": "aspect-[16/9]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Rapid iterative creative variants for seasonal drop blitz.",
+        "aspect": "aspect-[4/3]"
+      }
+    ],
+    "testimonial": {
+      "quote": "ART.DOT blended ruthless performance discipline with luxury sensibilities. Their creative iteration cycle allowed us to scale ad spend 4x while consistently lowering cost-per-acquisition.",
+      "author": "Marcus Lindqvist",
+      "role": "Global Head of Digital",
+      "company": "Axel Arigato"
+    },
+    "nextProject": {
+      "slug": "siematic",
+      "title": "SIEMATIC",
+      "subtitle": "Brand Awareness & Content Strategy"
+    },
+    "prevProject": {
+      "slug": "southwestsix",
+      "title": "SOUTHWESTSIX",
+      "subtitle": "Experiential Launch & Social Momentum"
+    }
+  },
+  {
+    "slug": "siematic",
+    "title": "SIEMATIC",
+    "subtitle": "Brand Awareness & Editorial Content Strategy",
+    "number": "02",
+    "year": "2024",
+    "client": "SieMatic Möbelwerke",
+    "industry": "Architectural Design & Premium Interiors",
+    "services": ["Brand Narrative", "Video Production", "Editorial Content", "Social Architecture"],
+    "overview": "Repositioning iconic German luxury kitchen manufacturer SieMatic for the next generation of architectural buyers through a sleek digital-first content ecosystem.",
+    "challenge": "Legacy luxury kitchen marketing has historically leaned on static catalog photography. SieMatic required an evocative, motion-rich digital presence that communicated precision engineering, bespoke craftsmanship, and timeless minimalism to younger high-net-worth homeowners and interior architects.",
+    "approach": "We directed a documentary-style video series capturing the tactile materiality of SieMatic finishes in architectural spaces across London, Paris, and Berlin. Combined with an editorial digital journal, we established a distinctive architectural aesthetic that elevated brand perception across all social channels.",
+    "results": [
+      { "value": 180, "suffix": "%", "label": "Engagement Lift" },
+      { "value": 12, "suffix": "M+", "label": "Organic Reach" },
+      { "value": 65, "suffix": "%", "label": "Architect Inquiries" },
+      { "value": 94, "suffix": "%", "label": "Positive Brand Sentiment" }
+    ],
+    "galleryImages": [
+      {
+        "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Precision joinery and architectural surface interplay.",
+        "aspect": "aspect-[16/9]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Minimalist spatial composition shot on location in Milan.",
+        "aspect": "aspect-[4/3]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Material tactile study: smoked oak, monolithic quartz, brushed bronze.",
+        "aspect": "aspect-[3/4]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Cinematic ambient light study in contemporary loft setting.",
+        "aspect": "aspect-[4/3]"
+      }
+    ],
+    "testimonial": {
+      "quote": "The work ART.DOT produced completely transformed how architects and private clients perceive our modern product lines. It set a new benchmark for architectural storytelling.",
+      "author": "Elena Rossi",
+      "role": "Brand Communications Director",
+      "company": "SieMatic"
+    },
+    "nextProject": {
+      "slug": "carsicko",
+      "title": "CARSICKO",
+      "subtitle": "Community Growth & Influencer Activation"
+    },
+    "prevProject": {
+      "slug": "axel-arigato",
+      "title": "AXEL ARIGATO",
+      "subtitle": "Digital Advertising Case Study"
+    }
+  },
+  {
+    "slug": "carsicko",
+    "title": "CARSICKO",
+    "subtitle": "Community Growth & Cultural Activation",
+    "number": "03",
+    "year": "2024",
+    "client": "CARSICKO London",
+    "industry": "Contemporary Streetwear & Subculture",
+    "services": ["Influencer Seeding", "Drop Campaigns", "Viral Social Stunts", "Community Management"],
+    "overview": "Igniting UK streetwear powerhouse CARSICKO with an explosive grassroots creator activation and guerilla pop-up campaign that sold out 3 consecutive collection drops within minutes.",
+    "challenge": "In an oversaturated streetwear landscape driven by hype cycles, CARSICKO needed to build deep, authentic subcultural resonance rather than transactional influencer promotion, turning casual fans into loyal brand disciples.",
+    "approach": "We curated a private network of 120+ underground UK musicians, skateboarders, and visual artists for synchronized unannounced drop reveals. Coupled with geofenced scavenger hunts across central London, we turned each release into an electric community event.",
+    "results": [
+      { "value": 450, "suffix": "%", "label": "Community Growth" },
+      { "value": 38, "suffix": "M+", "label": "TikTok Views" },
+      { "value": 3, "suffix": "min", "label": "Sellout Speed / Drop" },
+      { "value": 120, "suffix": "+", "label": "Creator Activations" }
+    ],
+    "galleryImages": [
+      {
+        "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Guerilla lookbook shoot in underground London metro setting.",
+        "aspect": "aspect-[3/4]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+        "caption": "High-octane neon night photography for collection teaser.",
+        "aspect": "aspect-[4/3]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1400&q=80",
+        "caption": "Pop-up event documentation: 800+ queue on Brewer Street.",
+        "aspect": "aspect-[16/9]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Exclusive seeding kit unboxing series that drove organic TikTok virality.",
+        "aspect": "aspect-[4/3]"
+      }
+    ],
+    "testimonial": {
+      "quote": "ART.DOT doesn't just understand internet culture—they shape it. Every single activation they ran for us turned into an immediate viral cultural moment.",
+      "author": "Kofi Mensah",
+      "role": "Founder & Creative Director",
+      "company": "CARSICKO"
+    },
+    "nextProject": {
+      "slug": "southwestsix",
+      "title": "SOUTHWESTSIX",
+      "subtitle": "Experiential Launch & Social Momentum"
+    },
+    "prevProject": {
+      "slug": "siematic",
+      "title": "SIEMATIC",
+      "subtitle": "Brand Awareness & Content Strategy"
+    }
+  },
+  {
+    "slug": "southwestsix",
+    "title": "SOUTHWESTSIX",
+    "subtitle": "Experiential Launch & Social Momentum",
+    "number": "04",
+    "year": "2024",
+    "client": "SouthwestSix Hospitality Group",
+    "industry": "Experiential Hospitality & Nightlife",
+    "services": ["Immersive Spatial Design", "Launch Production", "Press Strategy", "Visual Identity"],
+    "overview": "A multisensory experiential launch event and digital momentum campaign introducing Fulham's newest members' club and private dining establishment.",
+    "challenge": "Launching an exclusive private venue in West London required generating immense exclusivity and buzz without feeling generic or elitist, attracting premier tastemakers across arts, tech, and entertainment.",
+    "approach": "We designed an invite-only preview weekend featuring bespoke audio-visual spatial mapping, Michelin-star culinary pairings, and live musical performances, documented by discreet editorial cinematographers for targeted social distribution.",
+    "results": [
+      { "value": 520, "suffix": "%", "label": "Membership Over-Subscription" },
+      { "value": 18, "suffix": "+", "label": "National Press Features" },
+      { "value": 250, "suffix": "k", "label": "Launch Weekend Reach" },
+      { "value": 98, "suffix": "%", "label": "VIP Attendance Rate" }
+    ],
+    "galleryImages": [
+      {
+        "url": "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1400&q=80",
+        "caption": "Atmospheric moody ambient lighting design across the main dining hall.",
+        "aspect": "aspect-[16/9]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Bespoke cocktail bar craft and hospitality details.",
+        "aspect": "aspect-[4/3]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Private lounge nook featuring curated mid-century modern furniture.",
+        "aspect": "aspect-[3/4]"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Evening launch gala attended by 300+ cultural tastemakers.",
+        "aspect": "aspect-[4/3]"
+      }
+    ],
+    "testimonial": {
+      "quote": "The launch executed by ART.DOT created unmatched intrigue across London. We reached maximum founding member capacity within 72 hours of the preview night.",
+      "author": "Victoria Sterling",
+      "role": "Managing Director",
+      "company": "SouthwestSix"
+    },
+    "nextProject": {
+      "slug": "axel-arigato",
+      "title": "AXEL ARIGATO",
+      "subtitle": "Digital Advertising Case Study"
+    },
+    "prevProject": {
+      "slug": "carsicko",
+      "title": "CARSICKO",
+      "subtitle": "Community Growth & Influencer Activation"
+    }
+  }
+]
