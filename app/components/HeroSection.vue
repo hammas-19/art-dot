@@ -6,6 +6,7 @@ import { useTextAnimation } from "@/composables/useTextAnimation";
 const heroRef = ref<HTMLElement | null>(null);
 const heroVisible = ref(false);
 const scrollParallaxY = ref(0);
+const activeSet = ref(0); // 0, 1, 2 rotating every 2s
 
 // GSAP text animations
 useTextAnimation(".hero-heading");
@@ -14,6 +15,7 @@ useTextAnimation(".hero-subtitle");
 let ctx: gsap.Context | null = null;
 let mouseMoveHandler: ((e: MouseEvent) => void) | null = null;
 let scrollHandler: (() => void) | null = null;
+let setCycleTimer: number | null = null;
 
 const scrollToSection = (id: string, event?: Event) => {
   if (event) event.preventDefault();
@@ -26,6 +28,45 @@ const scrollToSection = (id: string, event?: Event) => {
 const scrollToExplore = () => {
   const aboutSection = document.getElementById("section-about");
   aboutSection?.scrollIntoView({ behavior: "smooth" });
+};
+
+// Function to smoothly update tile sets using GSAP
+const updateTileSets = (activeIdx: number) => {
+  const allTiles = heroRef.value?.querySelectorAll<HTMLElement>(".living-tile");
+  if (!allTiles) return;
+
+  allTiles.forEach((tile) => {
+    // If user is currently hovering this tile, keep it at full opacity
+    if (tile.matches(":hover")) return;
+
+    const setAttr = tile.getAttribute("data-set");
+    const sets = setAttr ? setAttr.split(",").map((s) => parseInt(s.trim())) : [0];
+    const isActive = sets.includes(activeIdx);
+
+    if (isActive) {
+      tile.classList.add("is-active-set");
+      gsap.to(tile, {
+        opacity: 1,
+        filter: "brightness(1) contrast(1.35)",
+        borderColor: "rgba(208, 252, 77, 0.5)",
+        boxShadow: "0 0 32px rgba(208, 252, 77, 0.16)",
+        duration: 0.75,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    } else {
+      tile.classList.remove("is-active-set");
+      gsap.to(tile, {
+        opacity: 0.28,
+        filter: "brightness(0.68) contrast(1.05)",
+        borderColor: "rgba(208, 252, 77, 0.12)",
+        boxShadow: "0 0 0px rgba(0,0,0,0)",
+        duration: 0.75,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
+  });
 };
 
 onMounted(() => {
@@ -44,7 +85,7 @@ onMounted(() => {
 
   // GSAP animations context
   ctx = gsap.context(() => {
-    // Reveal animation
+    // Initial Reveal animation
     gsap.from(".living-tile", {
       opacity: 0,
       scale: 0.94,
@@ -55,6 +96,14 @@ onMounted(() => {
         from: "random",
       },
       ease: "power3.out",
+      onComplete: () => {
+        // Start set cycling immediately after entrance animation
+        updateTileSets(0);
+        setCycleTimer = window.setInterval(() => {
+          activeSet.value = (activeSet.value + 1) % 3;
+          updateTileSets(activeSet.value);
+        }, 3000);
+      },
     });
 
     // Autonomous organic micro-floating
@@ -70,6 +119,50 @@ onMounted(() => {
         yoyo: true,
         ease: "sine.inOut",
         delay: i * 0.25,
+      });
+    });
+
+    // Hover listeners for tiles to boost opacity on hover & return to set opacity on leave
+    const allTiles = heroRef.value?.querySelectorAll<HTMLElement>(".living-tile");
+    allTiles?.forEach((tile) => {
+      tile.addEventListener("mouseenter", () => {
+        gsap.to(tile, {
+          opacity: 1,
+          filter: "brightness(1.05) contrast(1.35)",
+          borderColor: "rgba(208, 252, 77, 0.85)",
+          boxShadow: "0 0 40px rgba(208, 252, 77, 0.28)",
+          duration: 0.35,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      });
+
+      tile.addEventListener("mouseleave", () => {
+        const setAttr = tile.getAttribute("data-set");
+        const sets = setAttr ? setAttr.split(",").map((s) => parseInt(s.trim())) : [0];
+        const isActive = sets.includes(activeSet.value);
+
+        if (isActive) {
+          gsap.to(tile, {
+            opacity: 1,
+            filter: "brightness(1) contrast(1.35)",
+            borderColor: "rgba(208, 252, 77, 0.5)",
+            boxShadow: "0 0 32px rgba(208, 252, 77, 0.16)",
+            duration: 0.5,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        } else {
+          gsap.to(tile, {
+            opacity: 0.28,
+            filter: "brightness(0.68) contrast(1.05)",
+            borderColor: "rgba(208, 252, 77, 0.12)",
+            boxShadow: "0 0 0px rgba(0,0,0,0)",
+            duration: 0.5,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        }
       });
     });
 
@@ -134,6 +227,9 @@ onUnmounted(() => {
   if (scrollHandler) {
     window.removeEventListener("scroll", scrollHandler);
   }
+  if (setCycleTimer) {
+    clearInterval(setCycleTimer);
+  }
   ctx?.revert();
 });
 </script>
@@ -170,10 +266,12 @@ onUnmounted(() => {
       <div class="hidden lg:flex flex-col gap-3.5 py-2 w-full">
         <!-- TOP ROW TILES -->
         <div class="grid grid-cols-12 gap-3.5 h-44 xl:h-48">
-          <!-- Tile 1: Top-Left Large B&W Portrait Card (3 cols) -->
+          <!-- Tile 1: Top-Left Large B&W Portrait Card (3 cols) [Set 0] -->
           <div
             data-depth="14"
+            data-set="0"
             class="living-tile living-tile-float col-span-3 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 0 }"
           >
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
@@ -202,10 +300,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Tile 2: Top-Center-Left Abstract Lime Waves (3 cols) -->
+          <!-- Tile 2: Top-Center-Left Abstract Lime Waves (3 cols) [Set 1] -->
           <div
             data-depth="10"
+            data-set="1"
             class="living-tile living-tile-float col-span-3 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 1 }"
           >
             <LivingGridWave density="dense" />
 
@@ -216,10 +316,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Tile 3: Top-Center Skater Mid-Air (2 cols) -->
+          <!-- Tile 3: Top-Center Skater Mid-Air (2 cols) [Set 2] -->
           <div
             data-depth="8"
+            data-set="2"
             class="living-tile col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 2 }"
           >
             <img
               src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=800&q=80"
@@ -231,18 +333,22 @@ onUnmounted(() => {
             <div class="absolute top-3 right-3 text-[9px] text-[#d0fc4d]/70 font-mono">+</div>
           </div>
 
-          <!-- Tile 4: Top-Center-Right Sonar Radar (2 cols) -->
+          <!-- Tile 4: Top-Center-Right Sonar Radar (2 cols) [Set 0] -->
           <div
             data-depth="12"
+            data-set="0"
             class="living-tile col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 0 }"
           >
             <LivingGridSonar />
           </div>
 
-          <!-- Tile 5: Top-Right Brutalist Architecture (2 cols) -->
+          <!-- Tile 5: Top-Right Brutalist Architecture (2 cols) [Set 1] -->
           <div
             data-depth="14"
+            data-set="1"
             class="living-tile living-tile-float col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 1 }"
           >
             <img
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
@@ -260,12 +366,14 @@ onUnmounted(() => {
 
         <!-- MIDDLE ROW: LEFT TILES + HERO CENTER CONTENT + RIGHT TILE -->
         <div class="grid grid-cols-12 gap-3.5 items-stretch min-h-[270px] xl:min-h-[300px]">
-          <!-- Left Column (3 cols): Tile 6 (Crosshair box) + Tile 7 (Moody Clouds) -->
+          <!-- Left Column (3 cols): Tile 6 (Crosshair box) [Set 1] + Tile 7 (Moody Clouds) [Set 2] -->
           <div class="col-span-3 grid grid-cols-2 gap-3.5">
-            <!-- Tile 6: Small Crosshair Dark Tile -->
+            <!-- Tile 6: Small Crosshair Dark Tile [Set 1] -->
             <div
               data-depth="16"
+              data-set="1"
               class="living-tile relative flex items-center justify-center overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#070707] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)] cursor-pointer"
+              :class="{ 'is-active-set': activeSet === 1 }"
             >
               <div class="text-[#d0fc4d] text-2xl font-light transition-transform duration-500 group-hover:scale-125 group-hover:rotate-90">
                 +
@@ -273,10 +381,12 @@ onUnmounted(() => {
               <div class="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest text-[#d0fc4d]/40">SYS.01</div>
             </div>
 
-            <!-- Tile 7: Moody Clouds & Concrete -->
+            <!-- Tile 7: Moody Clouds & Concrete [Set 2] -->
             <div
               data-depth="11"
+              data-set="2"
               class="living-tile relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+              :class="{ 'is-active-set': activeSet === 2 }"
             >
               <img
                 src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=600&q=80"
@@ -309,10 +419,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Right Column (3 cols): Tile 8 (Youth Culture Portrait in Sunglasses) -->
+          <!-- Right Column (3 cols): Tile 8 (Youth Culture Portrait in Sunglasses) [Set 0] -->
           <div
             data-depth="15"
+            data-set="0"
             class="living-tile living-tile-float col-span-3 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 0 }"
           >
             <img
               src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
@@ -334,10 +446,12 @@ onUnmounted(() => {
 
         <!-- BOTTOM ROW TILES -->
         <div class="grid grid-cols-12 gap-3.5 h-44 xl:h-48">
-          <!-- Tile 9: Bottom-Left Abstract Acoustic Waves (3 cols) -->
+          <!-- Tile 9: Bottom-Left Abstract Acoustic Waves (3 cols) [Set 1] -->
           <div
             data-depth="15"
+            data-set="1"
             class="living-tile living-tile-float col-span-3 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 1 }"
           >
             <LivingGridWave density="minimal" />
             <div class="absolute bottom-3.5 left-4 flex flex-col space-y-0.5 text-[9px] font-mono tracking-[0.26em] text-white/85 uppercase pointer-events-none">
@@ -348,10 +462,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Tile 10: Streetwear Sneaker Close-up (2 cols) -->
+          <!-- Tile 10: Streetwear Sneaker Close-up (2 cols) [Set 0] -->
           <div
             data-depth="11"
+            data-set="0"
             class="living-tile col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 0 }"
           >
             <img
               src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80"
@@ -365,10 +481,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Tile 11: Dark Ambient Card with Lime Bleed (3 cols) -->
+          <!-- Tile 11: Dark Ambient Card with Lime Bleed (3 cols) [Set 2] -->
           <div
             data-depth="9"
+            data-set="2"
             class="living-tile col-span-3 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#060606] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 2 }"
           >
             <!-- Ambient lime light bleed -->
             <div
@@ -381,10 +499,12 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Tile 12: Concert Crowd (2 cols) -->
+          <!-- Tile 12: Concert Crowd (2 cols) [Set 0] -->
           <div
             data-depth="12"
+            data-set="0"
             class="living-tile col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 0 }"
           >
             <img
               src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=800&q=80"
@@ -396,10 +516,12 @@ onUnmounted(() => {
             <div class="absolute top-3.5 right-4 text-[#d0fc4d] text-base font-light">+</div>
           </div>
 
-          <!-- Tile 13: Botanical Leaves with Glowing Lime Rim (2 cols) -->
+          <!-- Tile 13: Botanical Leaves with Glowing Lime Rim (2 cols) [Set 1] -->
           <div
             data-depth="14"
+            data-set="1"
             class="living-tile living-tile-float col-span-2 relative overflow-hidden rounded-[26px] border border-[#d0fc4d]/25 bg-[#080808] group transition-all duration-500 hover:border-[#d0fc4d]/75 hover:shadow-[0_0_35px_rgba(208,252,77,0.2)]"
+            :class="{ 'is-active-set': activeSet === 1 }"
           >
             <img
               src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80"
@@ -443,14 +565,22 @@ onUnmounted(() => {
 
         <!-- Curated Bento Grid on Mobile & Tablet -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-2xl px-2">
-          <!-- Mobile Tile 1: Wave -->
-          <div class="relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]">
+          <!-- Mobile Tile 1: Wave [Set 1] -->
+          <div
+            data-set="1"
+            class="living-tile relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]"
+            :class="{ 'is-active-set': activeSet === 1 }"
+          >
             <LivingGridWave density="minimal" :interactive="false" />
             <div class="absolute top-2.5 left-2.5 text-[8px] font-mono tracking-widest text-[#d0fc4d]">CREATIVE</div>
           </div>
 
-          <!-- Mobile Tile 2: Skater -->
-          <div class="relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]">
+          <!-- Mobile Tile 2: Skater [Set 2] -->
+          <div
+            data-set="2"
+            class="living-tile relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]"
+            :class="{ 'is-active-set': activeSet === 2 }"
+          >
             <img
               src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=600&q=80"
               alt="Skater"
@@ -460,13 +590,21 @@ onUnmounted(() => {
             <div class="absolute bottom-2.5 left-2.5 text-[8px] font-mono tracking-widest text-white/80">01 / 04</div>
           </div>
 
-          <!-- Mobile Tile 3: Sonar -->
-          <div class="relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]">
+          <!-- Mobile Tile 3: Sonar [Set 0] -->
+          <div
+            data-set="0"
+            class="living-tile relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]"
+            :class="{ 'is-active-set': activeSet === 0 }"
+          >
             <LivingGridSonar />
           </div>
 
-          <!-- Mobile Tile 4: Portrait -->
-          <div class="relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]">
+          <!-- Mobile Tile 4: Portrait [Set 0 & 2] -->
+          <div
+            data-set="0,2"
+            class="living-tile relative h-32 sm:h-36 overflow-hidden rounded-2xl border border-[#d0fc4d]/25 bg-[#080808]"
+            :class="{ 'is-active-set': activeSet === 0 || activeSet === 2 }"
+          >
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
               alt="Editorial portrait"
@@ -541,7 +679,28 @@ onUnmounted(() => {
 }
 
 .living-tile {
-  will-change: transform, border-color, box-shadow;
+  will-change: transform, opacity, border-color, box-shadow;
   backface-visibility: hidden;
+  opacity: 0.32;
+  filter: brightness(0.72) contrast(1.1);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s ease,
+              border-color 0.75s ease,
+              box-shadow 0.75s ease,
+              transform 0.5s ease;
+}
+
+.living-tile.is-active-set {
+  opacity: 1;
+  filter: brightness(1) contrast(1.35);
+  border-color: rgba(208, 252, 77, 0.45);
+  box-shadow: 0 0 30px rgba(208, 252, 77, 0.12);
+}
+
+.living-tile:hover {
+  opacity: 1 !important;
+  filter: brightness(1.05) contrast(1.35) !important;
+  border-color: rgba(208, 252, 77, 0.8) !important;
+  box-shadow: 0 0 40px rgba(208, 252, 77, 0.25) !important;
 }
 </style>
